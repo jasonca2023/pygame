@@ -14,7 +14,7 @@ class Game:
         self.allSprites = pygame.sprite.Group()
         self.collisionSprites = pygame.sprite.Group()
 
-        bgHeight = pygame.image.load('/Users/jasonca2/Documents/Pygame/Flappy bird/graphics/background.png').get_height()
+        bgHeight = pygame.image.load('../graphics/background.png').get_height()
         self.scaleFactor = windowHeight / bgHeight
 
         BG(self.allSprites, self.scaleFactor)
@@ -24,14 +24,14 @@ class Game:
         self.obstacle_timer = pygame.USEREVENT + 1
         pygame.time.set_timer(self.obstacle_timer, random.randint(800, 1400))
 
-        self.font = pygame.font.Font('/Users/jasonca2/Documents/Pygame/Flappy bird/graphics/flappy-bird-font (1)/flappy-bird-font.ttf', 30)
+        self.font = pygame.font.Font('../graphics/font/flappy-bird-font.ttf', 30)
         self.score = 0
         self.startOffset = 0
 
-        self.menuSurf = pygame.image.load('/Users/jasonca2/Documents/Pygame/Flappy bird/graphics/ui/ui1.png').convert_alpha()
+        self.menuSurf = pygame.image.load('../graphics/ui/ui1.png').convert_alpha()
         self.menuRect = self.menuSurf.get_rect(center = (windowWidth / 2, windowHeight / 2))
 
-        self.music = pygame.mixer.Sound('/Users/jasonca2/Documents/Pygame/Flappy bird/sound/Background music.wav')
+        self.music = pygame.mixer.Sound('../sound/Background music.wav')
         self.music.set_volume(5)
         self.music.play(loops = -1)
         
