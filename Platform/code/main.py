@@ -36,17 +36,17 @@ class Game:
         self.audio['shoot'].play()
         
     def load_assets(self):
-        self.player_frames = import_folder('/Users', 'jasonca2', 'Documents', 'Pygame', 'Platform', 'images', 'player')
-        self.bullet_surf = import_image('/Users', 'jasonca2', 'Documents', 'Pygame', 'Platform', 'images', 'gun', 'bullet')
-        self.fire_surf = import_image('/Users', 'jasonca2', 'Documents', 'Pygame', 'Platform', 'images', 'gun', 'fire')
-        self.bee_frames = import_folder('/Users', 'jasonca2', 'Documents', 'Pygame', 'Platform', 'images', 'enemies', 'bee')
-        self.worm_frames = import_folder('/Users', 'jasonca2', 'Documents', 'Pygame', 'Platform', 'images', 'enemies', 'worm')
+        self.player_frames = import_folder('..', 'images', 'player')
+        self.bullet_surf = import_image('..', 'images', 'gun', 'bullet')
+        self.fire_surf = import_image('..', 'images', 'gun', 'fire')
+        self.bee_frames = import_folder('..', 'images', 'enemies', 'bee')
+        self.worm_frames = import_folder('..', 'images', 'enemies', 'worm')
 
-        self.audio = audio_importer('/Users', 'jasonca2', 'Documents', 'Pygame', 'Platform', 'audio')
-        self.other_audio = audio_importer('/Users', 'jasonca2', 'Documents', 'Pygame', 'Vampire survivor', 'audio')
+        self.audio = audio_importer('..', 'audio')
+        self.other_audio = audio_importer('..', '..', 'Vampire survivor', 'audio')
         
     def setup(self):
-        tmx_map = load_pygame(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Platform', 'data', 'maps', 'world.tmx'))
+        tmx_map = load_pygame(join('..', 'data', 'maps', 'world.tmx'))
         self.level_width = tmx_map.width * TILE_SIZE
         self.level_height = tmx_map.height * TILE_SIZE
 
