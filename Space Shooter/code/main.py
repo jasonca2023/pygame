@@ -6,7 +6,7 @@ import time
 class Player(pygame.sprite.Sprite):
     def __init__(self, groups):
         super().__init__(groups)
-        self.image = pygame.image.load(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Space Shooter', 'graphics', 'player.png')).convert_alpha()
+        self.image = pygame.image.load(join('..', 'graphics', 'player.png')).convert_alpha()
         self.rect = self.image.get_frect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
         self.direction = pygame.Vector2()
         self.speed = 300
@@ -127,26 +127,26 @@ all_sprites = pygame.sprite.Group()
 meteor_sprites = pygame.sprite.Group()
 laser_sprites = pygame.sprite.Group()
 
-star_surf = pygame.image.load(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Space Shooter', 'graphics', 'star.png')).convert_alpha()
+star_surf = pygame.image.load(join('..', 'graphics', 'star.png')).convert_alpha()
 for i in range(20):
     Star(all_sprites, star_surf)
 
 player = Player(all_sprites)
 
-meteor_surf = pygame.image.load(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Space Shooter', 'graphics', 'meteor.png')).convert_alpha()
+meteor_surf = pygame.image.load(join('..', 'graphics', 'meteor.png')).convert_alpha()
 
-laser_surf = pygame.image.load(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Space Shooter', 'graphics', 'laser.png')).convert_alpha()
+laser_surf = pygame.image.load(join('..', 'graphics', 'laser.png')).convert_alpha()
 
-font = pygame.font.Font(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Space Shooter', 'graphics', 'Oxanium-Bold.ttf'), 40)
+font = pygame.font.Font(join('..', 'graphics', 'Oxanium-Bold.ttf'), 40)
 
-explosion_frames = [pygame.image.load(join('../../../../Documents', 'Pygame', 'Space Shooter', 'graphics', 'explosions', f'{i}.png')).convert_alpha() for i in range(21)]
+explosion_frames = [pygame.image.load(join('..', 'graphics', 'explosions', f'{i}.png')).convert_alpha() for i in range(21)]
 
-laser_sound = pygame.mixer.Sound(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Space Shooter', 'audio', 'laser.wav'))
+laser_sound = pygame.mixer.Sound(join('..', 'audio', 'laser.wav'))
 laser_sound.set_volume(0.5)
-explosion_sound = pygame.mixer.Sound(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Space Shooter', 'audio', 'explosion.wav'))
+explosion_sound = pygame.mixer.Sound(join('..', 'audio', 'explosion.wav'))
 explosion_sound.set_volume(0.5)
-damage_sound = pygame.mixer.Sound(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Space Shooter', 'audio', 'space shooter_audio_damage.ogg'))
-game_music = pygame.mixer.Sound(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Space Shooter', 'audio', 'game_music.wav'))
+damage_sound = pygame.mixer.Sound(join('..', 'audio', 'space shooter_audio_damage.ogg'))
+game_music = pygame.mixer.Sound(join('..', 'audio', 'game_music.wav'))
 game_music.set_volume(0.05)
 game_music.play(loops = -1)
 
