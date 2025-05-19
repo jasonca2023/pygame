@@ -38,7 +38,7 @@ class Game:
         self.setup()
 
     def load_images(self):
-        self.bullet_surf = pygame.image.load(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Vampire survivor', 'images', 'gun', 'bullet.png')).convert_alpha()
+        self.bullet_surf = pygame.image.load(join('..', 'images', 'gun', 'bullet.png')).convert_alpha()
 
         folders = list(walk(join('..', 'images', 'enemies')))[0][1]
         self.enemy_frames = {}
