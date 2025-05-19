@@ -26,11 +26,11 @@ class Game:
         pygame.time.set_timer(self.enemy_event, 500)
         self.spawn_positions = []
 
-        self.shoot_sound = pygame.mixer.Sound(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Vampire survivor', 'audio', 'shoot.wav'))
+        self.shoot_sound = pygame.mixer.Sound(join('..', 'audio', 'shoot.wav'))
         self.shoot_sound.set_volume(0.1)
-        self.impact_sound = pygame.mixer.Sound(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Vampire survivor', 'audio', 'impact.ogg'))
+        self.impact_sound = pygame.mixer.Sound(join('..', 'audio', 'impact.ogg'))
         self.impact_sound.set_volume(0.1)
-        self.music = pygame.mixer.Sound(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Vampire survivor', 'audio', 'music.wav'))
+        self.music = pygame.mixer.Sound(join('..', 'audio', 'music.wav'))
         self.music.set_volume(0.6)
         self.music.play(loops = -1)
 
@@ -40,11 +40,11 @@ class Game:
     def load_images(self):
         self.bullet_surf = pygame.image.load(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Vampire survivor', 'images', 'gun', 'bullet.png')).convert_alpha()
 
-        folders = list(walk(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Vampire survivor', 'images', 'enemies')))[0][1]
+        folders = list(walk(join('..', 'images', 'enemies')))[0][1]
         self.enemy_frames = {}
         for folder in folders:
             if 'skeleton' in folder or 'blob' in folder or 'bat' in folder:
-                for folder_path, _, file_names in walk(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Vampire survivor', 'images', 'enemies', folder)):
+                for folder_path, _, file_names in walk(join('..', 'images', 'enemies', folder)):
                     self.enemy_frames[folder] = []
                     for file_name in sorted(file_names, key = lambda name: int(name.split('.')[0])):
                         if '.png' in file_name:
@@ -67,7 +67,7 @@ class Game:
                 self.can_shoot = True
         
     def setup(self):
-        map = load_pygame(join('/Users', 'jasonca2', 'Documents', 'Pygame', 'Vampire survivor', 'data', 'maps', 'world.tmx'))
+        map = load_pygame(join('..', 'data', 'maps', 'world.tmx'))
 
         for x, y, image in map.get_layer_by_name('Ground').tiles():
             Sprite((x * TILE_SIZE, y * TILE_SIZE), image, self.all_sprites)
