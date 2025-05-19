@@ -20,7 +20,7 @@ class Player(pygame.sprite.Sprite):
 		self.on_surface = {'floor': False, 'left': False, 'right': False}
 
 		self.timers = {
-			'wall jump': Timer(500),
+			'wall jump': Timer(750),
 			'wall slide block': Timer(250)
 		}
 
