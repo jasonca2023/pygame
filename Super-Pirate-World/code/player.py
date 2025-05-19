@@ -67,7 +67,7 @@ class Player(pygame.sprite.Sprite):
 		if self.platform:
 			self.rect.topleft += self.platform.direction * self.platform.speed * dt
 			if self.rect.bottom > self.platform.rect.top + 1:
-				self.rect.bottom = self.platform.rect.top + 1
+				self.rect.bottom = self.platform.rect.top + 2
 
 	def check_contact(self):
 		floor_rect = pygame.Rect(self.rect.bottomleft, (self.rect.width, 2))
