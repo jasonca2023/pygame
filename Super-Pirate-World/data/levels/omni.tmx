@@ -161,14 +161,14 @@
     <property name="start_angle" type="int" value="0"/>
    </properties>
   </object>
-  <object id="74" name="helicopter" x="341" y="2.09356" width="10" height="320">
+  <object id="74" name="helicopter" x="342.008" y="56.5345" width="10" height="320">
    <properties>
     <property name="flip" type="bool" value="false"/>
     <property name="platform" type="bool" value="true"/>
     <property name="speed" type="int" value="100"/>
    </properties>
   </object>
-  <object id="75" name="helicopter" x="505.775" y="177" width="300" height="10">
+  <object id="75" name="helicopter" x="524.93" y="196.155" width="300" height="10">
    <properties>
     <property name="flip" type="bool" value="false"/>
     <property name="platform" type="bool" value="true"/>
