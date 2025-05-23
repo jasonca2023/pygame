@@ -19,7 +19,8 @@ class Game:
 		self.level_frames = {
 			'flag': import_folder('..', 'graphics', 'level', 'flag'),
 			'saw': import_folder('..', 'graphics', 'enemies', 'saw', 'animation'),
-			'floor_spike': import_folder('..', 'graphics', 'enemies', 'floor_spikes')
+			'floor_spike': import_folder('..', 'graphics', 'enemies', 'floor_spikes'),
+			'palms': import_sub_folders('..', 'graphics', 'level', 'palms')
 		}
 
 	def run(self):
