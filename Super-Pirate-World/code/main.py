@@ -25,7 +25,8 @@ class Game:
 			'window': import_folder('..', 'graphics', 'level', 'window'),
 			'big_chain': import_folder('..', 'graphics', 'level', 'big_chains'),
 			'small_chain': import_folder('..', 'graphics', 'level', 'small_chains'),
-			'candle_light': import_folder('..', 'graphics', 'level', 'candle light')
+			'candle_light': import_folder('..', 'graphics', 'level', 'candle light'),
+			'player': import_sub_folders('..', 'graphics', 'player')
 		}
 
 	def run(self):
