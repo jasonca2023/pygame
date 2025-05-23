@@ -27,6 +27,14 @@ class Level:
 					case _: z = Z_LAYERS['main']
 				Sprite((x * TILE_SIZE,y * TILE_SIZE), surf, groups, z)
 
+		for obj in tmx_map.get_layer_by_name('BG details'):
+			if obj.name == 'static':
+				Sprite((obj.x, obj.y), obj.image, self.all_sprites, Z_LAYERS['bg tiles'])
+			else:
+				AnimatedSprite((obj.x, obj.y), level_frames[obj.name], self.all_sprites, Z_LAYERS['bg tiles'])
+				if obj.name == 'candle':
+					AnimatedSprite((obj.x, obj.y) + vector(-20, -20), level_frames['candle_light'], self.all_sprites, Z_LAYERS['bg tiles'])
+
 		for obj in tmx_map.get_layer_by_name('Objects'):
 			if obj.name == 'player':
 				self.player = Player((obj.x, obj.y), self.all_sprites, self.collision_sprites, self.semi_collision_sprites)
