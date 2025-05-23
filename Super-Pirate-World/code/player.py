@@ -1,5 +1,5 @@
 from settings import * 
-from timer import Timer
+from timer import Timer # type: ignore
 from os.path import join
 
 class Player(pygame.sprite.Sprite):
