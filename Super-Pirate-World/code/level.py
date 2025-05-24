@@ -3,7 +3,7 @@ from sprites import Sprite, AnimatedSprite, MovingSprite, Spike
 from player import Player
 from groups import AllSprites
 from random import uniform
-from enemies import Tooth
+from enemies import Tooth # type: ignore
 
 class Level:
 	def __init__(self, tmx_map, level_frames):
