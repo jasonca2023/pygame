@@ -49,7 +49,7 @@ class Player(pygame.sprite.Sprite):
 			if keys[pygame.K_DOWN]:
 				self.timers['platform skip'].activate()
 
-			if keys[pygame.K_w]:
+			if pygame.mouse.get_pressed()[0]:
 				self.attack()
 
 			self.direction.x = input_vector.normalize().x if input_vector else input_vector.x
