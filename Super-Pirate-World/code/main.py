@@ -29,7 +29,9 @@ class Game:
 			'candle_light': import_folder('..', 'graphics', 'level', 'candle light'),
 			'player': import_sub_folders('..', 'graphics', 'player'),
 			'helicopter': import_folder('..', 'graphics', 'level', 'helicopter'),
-			'boat': import_folder('..', 'graphics', 'objects', 'boat')
+			'boat': import_folder('..', 'graphics', 'objects', 'boat'),
+			'spike': import_image('..', 'graphics', 'enemies', 'spike_ball', 'Spiked Ball'),
+			'spike_chain': import_image('..', 'graphics', 'enemies', 'spike_ball', 'spiked_chain')
 		}
 
 	def run(self):
