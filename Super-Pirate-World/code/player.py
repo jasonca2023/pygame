@@ -1,6 +1,7 @@
 from settings import * 
 from timer import Timer # type: ignore
 from os.path import join
+from math import sin
 
 class Player(pygame.sprite.Sprite):
 	def __init__(self, pos, groups, collision_sprites, semi_collision_sprites, frames):
@@ -32,7 +33,7 @@ class Player(pygame.sprite.Sprite):
 			'wall slide block': Timer(250),
 			'platform skip': Timer(100),
 			'attack block': Timer(500),
-			'hit': Timer(400)
+			'hit': Timer(500)
 		}
 
 	def input(self):
@@ -173,6 +174,13 @@ class Player(pygame.sprite.Sprite):
 			print('you suck')
 			self.timers['hit'].activate()
 
+	def flicker(self):
+		if self.timers['hit'].active and sin(pygame.time.get_ticks()) >= 0:
+			white_mask = pygame.mask.from_surface(self.image)
+			white_surf = white_mask.to_surface()
+			white_surf.set_colorkey('black')
+			self.image = white_surf
+
 	def update(self, dt):
 		self.old_rect = self.hitbox_rect.copy()
 		self.update_timers()
@@ -184,3 +192,4 @@ class Player(pygame.sprite.Sprite):
 
 		self.get_state()
 		self.animate(dt)
+		self.flicker()
