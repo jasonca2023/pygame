@@ -6,8 +6,9 @@ from random import uniform
 from enemies import Tooth, Shell, Pearl # type: ignore
 
 class Level:
-	def __init__(self, tmx_map, level_frames):
+	def __init__(self, tmx_map, level_frames, data):
 		self.display_surface = pygame.display.get_surface()
+		self.data = data
 
 		self.all_sprites = AllSprites()
 		self.collision_sprites = pygame.sprite.Group()
@@ -48,7 +49,8 @@ class Level:
 						 groups = self.all_sprites, 
 						 collision_sprites = self.collision_sprites, 
 						 semi_collision_sprites = self.semi_collision_sprites,
-						 frames = level_frames['player'])
+						 frames = level_frames['player'],
+						 data = self.data)
 			else:
 				if obj.name in ('barrel', 'crate'):
 					Sprite((obj.x, obj.y), obj.image, (self.all_sprites, self.collision_sprites))
@@ -129,7 +131,7 @@ class Level:
 					create_pearl = self.create_pearl)
 				
 		for obj in tmx_map.get_layer_by_name('Items'):
-			Item(obj.name, (obj.x + TILE_SIZE / 2, obj.y + TILE_SIZE / 2), level_frames['items'][obj.name], (self.all_sprites, self.item_sprites))
+			Item(obj.name, (obj.x + TILE_SIZE / 2, obj.y + TILE_SIZE / 2), level_frames['items'][obj.name], (self.all_sprites, self.item_sprites), self.data)
 
 	def create_pearl(self, pos, direction):
 		Pearl(pos, (self.all_sprites, self.damage_sprites, self.pearl_sprites), self.pearl_surf, direction, 150)
@@ -152,6 +154,7 @@ class Level:
 		if self.item_sprites:
 			item_sprites = pygame.sprite.spritecollide(self.player, self.item_sprites, True)
 			if item_sprites:
+				item_sprites[0].activate()
 				ParticleEffectSprite((item_sprites[0].rect.center), self.particle_frames, self.all_sprites)
 
 	def attack_collision(self):

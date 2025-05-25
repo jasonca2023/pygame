@@ -4,9 +4,10 @@ from os.path import join
 from math import sin
 
 class Player(pygame.sprite.Sprite):
-	def __init__(self, pos, groups, collision_sprites, semi_collision_sprites, frames):
+	def __init__(self, pos, groups, collision_sprites, semi_collision_sprites, frames, data):
 		super().__init__(groups)
 		self.z = Z_LAYERS['main']
+		self.data = data
 
 		self.frames, self.frame_index = frames, 0
 		self.state, self.facing_right = 'idle', True
@@ -171,7 +172,7 @@ class Player(pygame.sprite.Sprite):
 
 	def get_damage(self):
 		if not self.timers['hit'].active:
-			print('you suck')
+			self.data.health -= 1
 			self.timers['hit'].activate()
 
 	def flicker(self):
