@@ -1,5 +1,6 @@
 from settings import *
 from sprites import AnimatedSprite
+from random import randint
 
 class UI:
     def __init__(self, font, frames):
@@ -8,11 +9,15 @@ class UI:
         self.font = font
 
         self.heart_frames = frames['heart']
+        self.heart_surf_width = self.heart_frames[0].get_width()
+        self.heart_padding = 5
         self.create_hearts(5)
     
     def create_hearts(self, amount):
+        for sprite in self.sprites:
+            sprite.kill()
         for heart in range(amount):
-            x = 10 + heart * 50
+            x = 10 + heart * (self.heart_surf_width + self.heart_padding)
             y = 10
             Heart((x, y), self.heart_frames, self.sprites)
 
@@ -23,3 +28,19 @@ class UI:
 class Heart(AnimatedSprite):
     def __init__(self, pos, frames, groups):
         super().__init__(pos, frames, groups)
+        self.active = False
+
+    def animate(self, dt):
+        self.frame_index += ANIMATION_SPEED * dt
+        if self.frame_index < len(self.frames):
+            self.image = self.frames[int(self.frame_index)]
+        else:
+            self.active = False
+            self.frame_index = 0
+    
+    def update(self, dt):
+        if self.active:
+            self.animate(dt)
+        else:
+            if randint(0, 2000) == 1:
+                self.active = True
