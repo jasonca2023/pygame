@@ -143,7 +143,7 @@ class Level:
 	def hit_collision(self):
 		for sprite in self.damage_sprites:
 			if sprite.rect.colliderect(self.player.hitbox_rect):
-				print('you suck')
+				self.player.get_damage()
 				if hasattr(sprite, 'pearl'):
 					sprite.kill()
 					ParticleEffectSprite((sprite.rect.center), self.particle_frames, self.all_sprites)
