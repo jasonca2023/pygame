@@ -214,4 +214,4 @@ class Level:
 		self.check_constraint()
 
 		self.display_surface.fill('black')
-		self.all_sprites.draw(self.player.hitbox_rect.center)
+		self.all_sprites.draw(self.player.hitbox_rect.center, dt)
