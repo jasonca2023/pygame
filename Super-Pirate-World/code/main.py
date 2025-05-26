@@ -45,8 +45,10 @@ class Game:
 		}
 
 		self.font = pygame.font.Font(join('..', 'graphics', 'ui', 'runescape_uf.ttf'), 40)
+		
 		self.ui_frames = {
-			'heart': import_folder('..', 'graphics', 'ui', 'heart')
+			'heart': import_folder('..', 'graphics', 'ui', 'heart'),
+			'coin': import_image('..', 'graphics', 'ui', 'coin')
 		}
 
 	def run(self):

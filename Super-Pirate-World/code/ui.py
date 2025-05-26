@@ -15,6 +15,7 @@ class UI:
 
         self.coin_amount = 0
         self.coin_timer = Timer(1000)
+        self.coin_surf = frames['coin']
     
     def create_hearts(self, amount):
         for sprite in self.sprites:
@@ -26,9 +27,11 @@ class UI:
 
     def display_text(self):
         if self.coin_timer.active:
-            text_surf = self.font.render(str(self.coin_amount), False, 'white')
+            text_surf = self.font.render(str(self.coin_amount), False, '#33323d')
             text_rect = text_surf.get_frect(topleft = (10, 34))
             self.display_surface.blit(text_surf, text_rect)
+            coin_rect = self.coin_surf.get_frect(center = text_rect.bottomleft).move(0, -6)
+            self.display_surface.blit(self.coin_surf, coin_rect)
 
     def show_coins(self, amount):
         self.coin_amount = amount
