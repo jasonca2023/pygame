@@ -12,7 +12,10 @@ class Data:
     @coins.setter
     def coins(self, value):
         self._coins = value
-        self.ui.show_coins(value)
+        if self.coins >= 100:
+            self.coins -= 100
+            self.health += 1
+        self.ui.show_coins(self.coins)
     
     @property
     def health(self):
