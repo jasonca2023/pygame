@@ -41,11 +41,13 @@ class Game:
 			'shell': import_sub_folders('..', 'graphics', 'enemies', 'shell'),
 			'pearl': import_image('..', 'graphics', 'enemies', 'bullets', 'pearl'),
 			'items': import_sub_folders('..', 'graphics', 'items'),
-			'particle': import_folder('..', 'graphics', 'effects', 'particle')
+			'particle': import_folder('..', 'graphics', 'effects', 'particle'),
+			'water_top': import_folder('..', 'graphics', 'level', 'water', 'top'),
+			'water_body': import_image('..', 'graphics', 'level', 'water', 'body')
 		}
 
 		self.font = pygame.font.Font(join('..', 'graphics', 'ui', 'runescape_uf.ttf'), 40)
-		
+
 		self.ui_frames = {
 			'heart': import_folder('..', 'graphics', 'ui', 'heart'),
 			'coin': import_image('..', 'graphics', 'ui', 'coin')
