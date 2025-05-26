@@ -21,7 +21,8 @@ class Level:
 		self.all_sprites = AllSprites(
 			width = tmx_map.width,
 			height = tmx_map.height,
-			bg_tile = bg_tile)
+			bg_tile = bg_tile,
+			top_limit = tmx_level_properties['top_limit'])
 		self.collision_sprites = pygame.sprite.Group()
 		self.semi_collision_sprites = pygame.sprite.Group()
 		self.damage_sprites = pygame.sprite.Group()
