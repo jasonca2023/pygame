@@ -3,6 +3,7 @@ class Data:
         self.ui = ui
         self.coins = 0
         self._health = 5
+        self.ui.create_hearts(self._health)
     
     @property
     def health(self):

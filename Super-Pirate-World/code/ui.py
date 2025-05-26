@@ -11,7 +11,6 @@ class UI:
         self.heart_frames = frames['heart']
         self.heart_surf_width = self.heart_frames[0].get_width()
         self.heart_padding = 5
-        self.create_hearts(5)
     
     def create_hearts(self, amount):
         for sprite in self.sprites:
