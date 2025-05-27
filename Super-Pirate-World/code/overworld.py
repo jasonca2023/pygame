@@ -1,5 +1,5 @@
 from settings import *
-from sprites import Sprite, AnimatedSprite
+from sprites import Sprite, AnimatedSprite, Node
 from groups import WorldSprites
 from random import randint
 
@@ -27,6 +27,15 @@ class Overworld:
             else:
                 z = Z_LAYERS[f'{'bg details' if obj.name == 'grass' else 'bg tiles'}']
                 Sprite((obj.x, obj.y), obj.image, self.all_sprites, z)
+
+        for obj in tmx_map.get_layer_by_name('Nodes'):
+            if obj.name == 'Node':
+                Node(
+                    pos = (obj.x, obj.y),
+                    surf = overworld_frames['path']['node'],
+                    groups = self.all_sprites,
+                    level = obj.properties['stage'],
+                    data = self.data)
 
     def run(self, dt):
         self.all_sprites.update(dt)
