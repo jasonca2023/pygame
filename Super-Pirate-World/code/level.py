@@ -6,13 +6,15 @@ from random import uniform
 from enemies import Tooth, Shell, Pearl # type: ignore
 
 class Level:
-	def __init__(self, tmx_map, level_frames, data):
+	def __init__(self, tmx_map, level_frames, data, switch_stage):
 		self.display_surface = pygame.display.get_surface()
 		self.data = data
+		self.switch_stage = switch_stage
 
 		self.level_width = tmx_map.width * TILE_SIZE
 		self.level_bottom = tmx_map.height * TILE_SIZE
 		tmx_level_properties = tmx_map.get_layer_by_name('Data')[0].properties
+		self.level_unlock = tmx_level_properties['level_unlock']
 		if tmx_level_properties['bg']:
 			bg_tile = level_frames['bg_tiles'][tmx_level_properties['bg']]
 		else:
@@ -200,10 +202,10 @@ class Level:
 			self.player.hitbox_rect.right = self.level_width
 
 		if self.player.hitbox_rect.bottom > self.level_bottom:
-			print('you suck')
+			self.switch_stage('overworld', -1)
 
 		if self.player.hitbox_rect.colliderect(self.level_finish_rect):
-			print('you dont suck')
+			self.switch_stage('overworld', self.level_unlock)
 
 	def run(self, dt):
 		self.all_sprites.update(dt)
