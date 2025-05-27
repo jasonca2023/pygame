@@ -1,5 +1,7 @@
 from settings import *
-from sprites import Sprite
+from sprites import Sprite, Cloud
+from random import choice, randint
+from timer import Timer # type: ignore
 
 class AllSprites(pygame.sprite.Group):
     def __init__(self, width, height, clouds, horizon_line, bg_tile = None, top_limit = 0):
@@ -31,6 +33,13 @@ class AllSprites(pygame.sprite.Group):
             self.large_cloud_x = 0
             self.large_cloud_tiles = int(self.width / self.large_cloud.get_width()) + 2
             self.large_cloud_width, self.large_cloud_height = self.large_cloud.get_size()
+
+            self.cloud_timer = Timer(2500, self.create_cloud, True)
+            self.cloud_timer.activate()
+            for cloud in range(12):
+                pos = (randint(0, self.width), randint(self.borders['top'], self.horizon_line))
+                surf = choice(self.small_clouds)
+                Cloud(pos, surf, self)
     
     def camera_constraint(self):
         self.offset.x = self.offset.x if self.offset.x < self.borders['left'] else self.borders['left']
@@ -49,12 +58,21 @@ class AllSprites(pygame.sprite.Group):
 
     def draw_large_cloud(self, dt):
         self.large_cloud_x += self.cloud_direction * self.large_cloud_speed * dt
+        if self.large_cloud_x <= -self.large_cloud_width:
+            self.large_cloud_x = 0
         for cloud in range(self.large_cloud_tiles):
             left = self.large_cloud_x + self.large_cloud_width * cloud + self.offset.x
             top = self.horizon_line - self.large_cloud_height + self.offset.y
             self.display_surface.blit(self.large_cloud, (left, top))
 
+    def create_cloud(self):
+        pos = (randint(self.width + 500, self.width + 600), randint(self.borders['top'], self.horizon_line))
+        surf = choice(self.small_clouds)
+        Cloud(pos, surf, self)
+
     def draw(self, target_pos, dt):
+        if self.sky:
+            self.cloud_timer.update()
         self.offset.x = -(target_pos[0] - WINDOW_WIDTH / 2)
         self.offset.y = -(target_pos[1] - WINDOW_HEIGHT / 2)
         self.camera_constraint()
