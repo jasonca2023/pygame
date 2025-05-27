@@ -15,11 +15,19 @@ class WorldSprites(pygame.sprite.Group):
         self.offset.y = -(target_pos[1] - WINDOW_HEIGHT / 2)
 
         for sprite in sorted(self, key = lambda sprite: sprite.z):
-            if sprite.z == Z_LAYERS['path']:
-                if sprite.level <= self.data.unlocked_level:
+            if sprite.z < Z_LAYERS['main']:
+                if sprite.z == Z_LAYERS['path']:
+                    if sprite.level <= self.data.unlocked_level:
+                        self.display_surface.blit(sprite.image, sprite.rect.topleft + self.offset)
+                else:
                     self.display_surface.blit(sprite.image, sprite.rect.topleft + self.offset)
-            else:
-                self.display_surface.blit(sprite.image, sprite.rect.topleft + self.offset)
+
+        for sprite in sorted(self, key = lambda sprite: sprite.rect.centery):
+            if sprite.z == Z_LAYERS['main']:
+                if hasattr(sprite, 'icon'):
+                    self.display_surface.blit(sprite.image, sprite.rect.topleft + self.offset + vector(0, -28))
+                else:
+                    self.display_surface.blit(sprite.image, sprite.rect.topleft + self.offset)
 
 class AllSprites(pygame.sprite.Group):
     def __init__(self, width, height, clouds, horizon_line, bg_tile = None, top_limit = 0):
