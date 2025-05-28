@@ -51,7 +51,6 @@ class AllSprites(pygame.sprite.Group):
                     Sprite((x, y), bg_tile, self, -1)
         else:
             self.large_cloud = clouds['large']
-            print(self.large_cloud)
             self.small_clouds = clouds['small']
             self.cloud_direction = -1
 

@@ -27,18 +27,17 @@ class Game:
 			5: load_pygame(join('..', 'data', 'levels', '5.tmx'))
 		}
 		self.tmx_overworld = load_pygame(join('..', 'data', 'overworld', 'overworld.tmx'))
-		self.current_stage = Level(self.tmx_maps[0], self.level_frames, self.data, self.switch_stage)
+		self.current_stage = Level(self.tmx_maps[self.data.current_level], self.level_frames, self.data, self.switch_stage)
 
 	def switch_stage(self, target, unlock = 0):
 		if target == 'level':
-			#self.current_stage = Level()
-			pass
+			self.current_stage = Level(self.tmx_maps[self.data.current_level], self.level_frames, self.data, self.switch_stage)
 		else:
 			if unlock > 0:
 				self.data.unlocked_level = unlock
 			else:
 				self.data.health -= 1
-			self.current_stage = Overworld(self.tmx_overworld, self.data, self.overworld_frames)
+			self.current_stage = Overworld(self.tmx_overworld, self.data, self.overworld_frames, self.switch_stage)
 
 	def import_assets(self):
 		self.level_frames = {
