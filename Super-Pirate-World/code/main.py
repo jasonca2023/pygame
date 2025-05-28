@@ -27,11 +27,11 @@ class Game:
 			5: load_pygame(join('..', 'data', 'levels', '5.tmx'))
 		}
 		self.tmx_overworld = load_pygame(join('..', 'data', 'overworld', 'overworld.tmx'))
-		self.current_stage = Level(self.tmx_maps[self.data.current_level], self.level_frames, self.data, self.switch_stage)
+		self.current_stage = Level(self.tmx_maps[self.data.current_level], self.level_frames, self.audio_files, self.data, self.switch_stage)
 
 	def switch_stage(self, target, unlock = 0):
 		if target == 'level':
-			self.current_stage = Level(self.tmx_maps[self.data.current_level], self.level_frames, self.data, self.switch_stage)
+			self.current_stage = Level(self.tmx_maps[self.data.current_level], self.level_frames, self.audio_files, self.data, self.switch_stage)
 		else:
 			if unlock > 0:
 				self.data.unlocked_level = unlock
@@ -82,6 +82,15 @@ class Game:
 			'icon': import_sub_folders('..', 'graphics', 'overworld', 'icon')
 		}
 
+		self.audio_files = {
+			'coin': pygame.mixer.Sound(join('..', 'audio', 'coin.wav'))
+		}
+
+	def check_game_over(self):
+		if self.data.health <= 0:
+			pygame.quit()
+			sys.exit()
+
 	def run(self):
 		while True:
 			dt = self.clock.tick() / 1000
@@ -90,6 +99,7 @@ class Game:
 					pygame.quit()
 					sys.exit()
 
+			self.check_game_over()
 			self.current_stage.run(dt)
 			self.ui.update(dt)
 			pygame.display.update()

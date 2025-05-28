@@ -6,7 +6,7 @@ from random import uniform
 from enemies import Tooth, Shell, Pearl # type: ignore
 
 class Level:
-	def __init__(self, tmx_map, level_frames, data, switch_stage):
+	def __init__(self, tmx_map, level_frames, audio_files, data, switch_stage):
 		self.display_surface = pygame.display.get_surface()
 		self.data = data
 		self.switch_stage = switch_stage
@@ -38,6 +38,9 @@ class Level:
 
 		self.pearl_surf = level_frames['pearl']
 		self.particle_frames = level_frames['particle']
+
+		self.coin_sound = audio_files['coin']
+		self.coin_sound.set_volume(0.1)
 
 	def setup(self, tmx_map, level_frames):
 		for layer in ['BG', 'Terrain', 'FG', 'Platforms']:
@@ -187,6 +190,7 @@ class Level:
 			if item_sprites:
 				item_sprites[0].activate()
 				ParticleEffectSprite((item_sprites[0].rect.center), self.particle_frames, self.all_sprites)
+				self.coin_sound.play()
 
 	def attack_collision(self):
 		for target in self.pearl_sprites.sprites() + self.tooth_sprites.sprites():
