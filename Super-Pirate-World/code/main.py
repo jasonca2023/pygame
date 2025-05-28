@@ -29,6 +29,8 @@ class Game:
 		self.tmx_overworld = load_pygame(join('..', 'data', 'overworld', 'overworld.tmx'))
 		self.current_stage = Level(self.tmx_maps[self.data.current_level], self.level_frames, self.audio_files, self.data, self.switch_stage)
 
+		self.bg_music.play(-1)
+
 	def switch_stage(self, target, unlock = 0):
 		if target == 'level':
 			self.current_stage = Level(self.tmx_maps[self.data.current_level], self.level_frames, self.audio_files, self.data, self.switch_stage)
@@ -89,6 +91,8 @@ class Game:
 			'damage': pygame.mixer.Sound(join('..', 'audio', 'damage.wav')),
 			'pearl': pygame.mixer.Sound(join('..', 'audio', 'pearl.wav'))
 		}
+		self.bg_music = pygame.mixer.Sound(join('..', 'audio', 'bg.wav'))
+		self.bg_music.set_volume(0.4)
 
 	def check_game_over(self):
 		if self.data.health <= 0:
