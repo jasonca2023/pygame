@@ -4,6 +4,7 @@ from player import Player
 from groups import AllSprites
 from random import uniform
 from enemies import Tooth, Shell, Pearl # type: ignore
+from timer import Timer # type: ignore
 
 class Level:
 	def __init__(self, tmx_map, level_frames, audio_files, data, switch_stage):
@@ -34,15 +35,21 @@ class Level:
 		self.pearl_sprites = pygame.sprite.Group()
 		self.item_sprites = pygame.sprite.Group()
 
-		self.setup(tmx_map, level_frames)
+		self.setup(tmx_map, level_frames, audio_files)
 
 		self.pearl_surf = level_frames['pearl']
 		self.particle_frames = level_frames['particle']
 
 		self.coin_sound = audio_files['coin']
-		self.coin_sound.set_volume(0.1)
+		self.coin_sound.set_volume(0.08)
+		self.damage_sound = audio_files['damage']
+		self.damage_sound.set_volume(0.2)
+		self.pearl_sound = audio_files['pearl']
+		self.pearl_sound.set_volume(0.5)
 
-	def setup(self, tmx_map, level_frames):
+		self.sound_timer = Timer(250)
+
+	def setup(self, tmx_map, level_frames, audio_files):
 		for layer in ['BG', 'Terrain', 'FG', 'Platforms']:
 			for x, y, surf in tmx_map.get_layer_by_name(layer).tiles():
 				groups = [self.all_sprites]
@@ -69,7 +76,9 @@ class Level:
 						 collision_sprites = self.collision_sprites, 
 						 semi_collision_sprites = self.semi_collision_sprites,
 						 frames = level_frames['player'],
-						 data = self.data)
+						 data = self.data,
+						 attack_sound = audio_files['attack'],
+						 jump_sound = audio_files['jump'])
 			else:
 				if obj.name in ('barrel', 'crate'):
 					Sprite((obj.x, obj.y), obj.image, (self.all_sprites, self.collision_sprites))
@@ -169,6 +178,7 @@ class Level:
 
 	def create_pearl(self, pos, direction):
 		Pearl(pos, (self.all_sprites, self.damage_sprites, self.pearl_sprites), self.pearl_surf, direction, 150)
+		self.pearl_sound.play()
 	
 	def pearl_collision(self):
 		for sprite in self.collision_sprites:
@@ -180,6 +190,9 @@ class Level:
 		for sprite in self.damage_sprites:
 			if sprite.rect.colliderect(self.player.hitbox_rect):
 				self.player.get_damage()
+				if not self.sound_timer.active:
+					self.damage_sound.play()
+					self.sound_timer.activate()
 				if hasattr(sprite, 'pearl'):
 					sprite.kill()
 					ParticleEffectSprite((sprite.rect.center), self.particle_frames, self.all_sprites)
@@ -212,6 +225,7 @@ class Level:
 			self.switch_stage('overworld', self.level_unlock)
 
 	def run(self, dt):
+		self.sound_timer.update()
 		self.all_sprites.update(dt)
 		self.pearl_collision()
 		self.hit_collision()

@@ -83,7 +83,11 @@ class Game:
 		}
 
 		self.audio_files = {
-			'coin': pygame.mixer.Sound(join('..', 'audio', 'coin.wav'))
+			'coin': pygame.mixer.Sound(join('..', 'audio', 'coin.wav')),
+			'attack': pygame.mixer.Sound(join('..', 'audio', 'attack.wav')),
+			'jump': pygame.mixer.Sound(join('..', 'audio', 'jump.wav')),
+			'damage': pygame.mixer.Sound(join('..', 'audio', 'damage.wav')),
+			'pearl': pygame.mixer.Sound(join('..', 'audio', 'pearl.wav'))
 		}
 
 	def check_game_over(self):
