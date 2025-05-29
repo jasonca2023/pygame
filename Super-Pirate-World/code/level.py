@@ -41,7 +41,7 @@ class Level:
 		self.particle_frames = level_frames['particle']
 
 		self.coin_sound = audio_files['coin']
-		self.coin_sound.set_volume(0.08)
+		self.coin_sound.set_volume(0.05)
 		self.damage_sound = audio_files['damage']
 		self.damage_sound.set_volume(0.2)
 		self.pearl_sound = audio_files['pearl']
