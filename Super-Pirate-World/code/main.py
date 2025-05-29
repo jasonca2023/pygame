@@ -7,7 +7,7 @@ from data import Data # type: ignore
 from debug import debug
 from ui import UI
 from overworld import Overworld # type: ignore
-
+ 
 class Game:
 	def __init__(self):
 		pygame.init()
