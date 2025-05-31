@@ -30,10 +30,6 @@ class Game:
 
         self.menuSurf = pygame.image.load('../graphics/ui/ui1.png').convert_alpha()
         self.menuRect = self.menuSurf.get_rect(center = (windowWidth / 2, windowHeight / 2))
-
-        self.music = pygame.mixer.Sound('../sound/Background music.wav')
-        self.music.set_volume(5)
-        self.music.play(loops = -1)
         
     def collisions(self):
         if pygame.sprite.spritecollide(self.plane, self.collisionSprites, False, pygame.sprite.collide_mask) or self.plane.rect.top <= 0:
