@@ -36,7 +36,7 @@ class Tooth(pygame.sprite.Sprite):
 
         if floor_rect_right.collidelist(self.collision_rects) < 0 and self.direction > 0 or \
            floor_rect_left.collidelist(self.collision_rects) < 0 and self.direction < 0 or \
-            wall_rect.collidelist(self.collision_rects) != -1:
+           wall_rect.collidelist(self.collision_rects) != -1:
             self.direction *= -1
 
 class Shell(pygame.sprite.Sprite):
