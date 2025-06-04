@@ -28,7 +28,7 @@ class Game:
             0: Monster('Ivieron', 32),
             1: Monster('Gulfin', 15),
             2: Monster('Cindrill', 16),
-            3: Monster('Finsta', 10),
+            3: Monster('Pouch', 10),
             4: Monster('Draem', 20),
             5: Monster('Atrox', 10),
             6: Monster('Jacana', 5),
