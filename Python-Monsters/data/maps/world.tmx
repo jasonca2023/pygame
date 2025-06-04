@@ -3,7 +3,7 @@
  <tileset firstgid="1" source="../tilesets/world.tsx"/>
  <tileset firstgid="211" source="../tilesets/objects.tsx"/>
  <tileset firstgid="242" source="../tilesets/Grass.tsx"/>
- <layer id="1" name="Terrain" width="86" height="86" visible="0">
+ <layer id="1" name="Terrain" width="86" height="86">
   <data encoding="csv">
 195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,196,132,132,136,132,132,132,136,132,123,42,43,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,
 195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,195,196,132,132,147,126,132,132,136,132,132,123,54,33,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,
@@ -93,7 +93,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="13" name="Terrain Top" width="86" height="86" visible="0">
+ <layer id="13" name="Terrain Top" width="86" height="86">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -183,7 +183,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="3" name="Entities" visible="0">
+ <objectgroup id="3" name="Entities">
   <object id="12" name="Player" x="4445.67" y="3850.74">
    <properties>
     <property name="direction" value="down"/>
@@ -297,7 +297,7 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="9" name="Coast" visible="0">
+ <objectgroup id="9" name="Coast">
   <object id="130" name="coast" x="4224" y="4992" width="64" height="64">
    <properties>
     <property name="side" value="top"/>
@@ -3873,7 +3873,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="2" name="Objects" visible="0">
+ <objectgroup id="2" name="Objects">
   <object id="1" gid="211" x="4352" y="3776" width="320" height="320"/>
   <object id="2" gid="226" x="3455.33" y="3783.33" width="128" height="192"/>
   <object id="3" gid="226" x="3264" y="3712" width="128" height="192"/>
@@ -4159,7 +4159,7 @@
   <object id="1288" gid="228" x="3324.2" y="612.139" width="64" height="128"/>
   <object id="1289" gid="228" x="3378.09" y="989.405" width="64" height="128"/>
  </objectgroup>
- <objectgroup id="12" name="Collisions" visible="0">
+ <objectgroup id="12" name="Collisions">
   <object id="211" x="4832.33" y="1976.5" width="33.3333" height="647.5"/>
   <object id="700" x="4857" y="1952" width="67.5" height="22.5"/>
   <object id="701" x="4899" y="1203" width="25" height="744"/>
@@ -4467,7 +4467,7 @@
   <object id="1305" x="2307.61" y="1778.59" width="126.898" height="72.7403"/>
   <object id="1306" x="1984.78" y="1463.63" width="58" height="200.693"/>
  </objectgroup>
- <objectgroup id="5" name="Transition" visible="0">
+ <objectgroup id="5" name="Transition">
   <object id="17" x="4421.09" y="3770.75" width="54.6667" height="3.83333">
    <properties>
     <property name="pos" value="world"/>
@@ -4505,7 +4505,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="10" name="Water" visible="0">
+ <objectgroup id="10" name="Water">
   <object id="136" x="0" y="5056" width="5504" height="320"/>
   <object id="161" x="3648" y="2496" width="192" height="192"/>
   <object id="162" x="3840" y="2560" width="512" height="128"/>
