@@ -1,1 +1,1 @@
-# Collection of Pygame Games 
+# Collection of Pygame Games
