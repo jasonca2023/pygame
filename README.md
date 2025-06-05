@@ -1,1 +1,1 @@
-# pygame
+Collection of Pygame Games
