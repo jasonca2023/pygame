@@ -106,7 +106,7 @@ class Game:
 			text_rect = win_text.get_frect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
 			self.display_surface.blit(win_text, text_rect)
 			pygame.display.update()
-			pygame.time.wait(3000)
+			pygame.time.wait(10000)
 			pygame.quit()
 			sys.exit()
 
