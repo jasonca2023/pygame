@@ -99,6 +99,17 @@ class Game:
 			pygame.quit()
 			sys.exit()
 
+	def check_win(self):
+		if self.data.current_level == 5 and isinstance((self.current_stage), Overworld):
+			self.display_surface.fill((0, 0, 0))
+			win_text = self.font.render('You win!', True, (255, 215, 0))
+			text_rect = win_text.get_frect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
+			self.display_surface.blit(win_text, text_rect)
+			pygame.display.update()
+			pygame.time.wait(3000)
+			pygame.quit()
+			sys.exit()
+
 	def run(self):
 		while True:
 			dt = self.clock.tick() / 1000
@@ -110,6 +121,7 @@ class Game:
 			self.check_game_over()
 			self.current_stage.run(dt)
 			self.ui.update(dt)
+			self.check_win()
 			pygame.display.update()
 
 if __name__ == '__main__':
