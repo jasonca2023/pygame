@@ -60,10 +60,10 @@
   <object id="149" name="static" gid="240" x="268.068" y="836.309" width="42" height="44"/>
   <object id="150" name="static" gid="240" x="240.088" y="836.235" width="42" height="44"/>
   <object id="153" name="big_chain" gid="233" x="260.893" y="626.446" width="64" height="116"/>
-  <object id="154" name="candle" gid="231" x="128.077" y="256.236" width="64" height="64"/>
-  <object id="155" name="candle" gid="231" x="320.04" y="256.9" width="64" height="64"/>
-  <object id="156" name="candle" gid="231" x="512.15" y="256.602" width="64" height="64"/>
-  <object id="157" name="candle" gid="231" x="703.815" y="256.851" width="64" height="64"/>
+  <object id="154" name="candle" gid="231" x="128" y="256" width="64" height="64"/>
+  <object id="155" name="candle" gid="231" x="320" y="256" width="64" height="64"/>
+  <object id="156" name="candle" gid="231" x="512" y="256" width="64" height="64"/>
+  <object id="157" name="candle" gid="231" x="704" y="256" width="64" height="64"/>
   <object id="158" name="small_chain" gid="234" x="552.31" y="572.589" width="64" height="62"/>
   <object id="159" name="small_chain" gid="234" x="565.657" y="572.589" width="64" height="62"/>
   <object id="160" name="big_chain" gid="233" x="553.793" y="627.155" width="64" height="116"/>
@@ -178,12 +178,12 @@
     <property name="inverted" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="124" name="saw" x="320.191" y="640.237" width="64" height="64">
+  <object id="124" name="saw" x="320" y="640" width="64" height="64">
    <properties>
     <property name="speed" type="int" value="0"/>
    </properties>
   </object>
-  <object id="125" name="saw" x="639.805" y="639.786" width="64" height="64">
+  <object id="125" name="saw" x="640" y="640" width="64" height="64">
    <properties>
     <property name="speed" type="int" value="0"/>
    </properties>
@@ -300,8 +300,8 @@
  <objectgroup id="7" name="Items">
   <object id="22" name="diamond" gid="49" x="449.012" y="704.477" width="64" height="64"/>
   <object id="24" name="potion" gid="51" x="192.232" y="705.728" width="64" height="64"/>
-  <object id="26" name="skull" gid="53" x="704.282" y="704.911" width="64" height="64"/>
-  <object id="80" name="skull" gid="53" x="1088.45" y="447.866" width="64" height="64"/>
+  <object id="26" name="skull" gid="53" x="704" y="704" width="64" height="64"/>
+  <object id="80" name="skull" gid="53" x="1088" y="448" width="64" height="64"/>
   <object id="98" name="silver" gid="52" x="1855.1" y="706.14" width="64" height="64"/>
   <object id="99" name="silver" gid="52" x="1983.18" y="704.243" width="64" height="64"/>
   <object id="100" name="silver" gid="52" x="2112.21" y="704.243" width="64" height="64"/>
