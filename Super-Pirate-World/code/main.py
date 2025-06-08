@@ -71,6 +71,8 @@ class Game:
 		}
 
 		self.font = pygame.font.Font(join('..', 'graphics', 'ui', 'runescape_uf.ttf'), 40)
+		self.win_font = pygame.font.Font(join('..', 'graphics', 'ui', 'win.ttf'), 100)
+		self.lose_font = pygame.font.Font(join('..', 'graphics', 'ui', 'lose.ttf'), 100)
 
 		self.ui_frames = {
 			'heart': import_folder('..', 'graphics', 'ui', 'heart'),
@@ -97,7 +99,7 @@ class Game:
 	def check_game_over(self):
 		if self.data.health <= 0:
 			self.display_surface.fill('#262424')
-			lose_text = self.font.render('You lose!', True, '#ebd278')
+			lose_text = self.lose_font.render('You lose!', True, '#ebd278')
 			lose_rect = lose_text.get_frect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
 			self.display_surface.blit(lose_text, lose_rect)
 			pygame.display.update()
@@ -108,7 +110,7 @@ class Game:
 	def check_win(self):
 		if self.data.current_level == 5 and isinstance((self.current_stage), Overworld):
 			self.display_surface.fill('#262424')
-			win_text = self.font.render('You win!', True, '#ebd278')
+			win_text = self.win_font.render('YOU WIN!!', True, '#ebd278')
 			win_rect = win_text.get_frect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
 			self.display_surface.blit(win_text, win_rect)
 			pygame.display.update()
