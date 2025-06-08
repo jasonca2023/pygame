@@ -98,7 +98,7 @@ class Game:
 
 	def check_game_over(self):
 		if self.data.health <= 0:
-			pygame.mixer.fadeout(8000)
+			pygame.mixer.fadeout(10000)
 			self.display_surface.fill('#262424')
 			lose_text = self.lose_font.render('You lose!', True, '#ebd278')
 			lose_rect = lose_text.get_frect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
@@ -110,7 +110,7 @@ class Game:
 
 	def check_win(self):
 		if self.data.current_level == 5 and isinstance((self.current_stage), Overworld):
-			pygame.mixer.fadeout(8000)
+			pygame.mixer.fadeout(10000)
 			self.display_surface.fill('#262424')
 			win_text = self.win_font.render('YOU WIN!!', True, '#ebd278')
 			win_rect = win_text.get_frect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
