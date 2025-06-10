@@ -255,12 +255,12 @@
     <property name="inverted" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="176" name="saw" x="1344" y="96" width="64" height="64">
+  <object id="176" name="saw" x="1344" y="112" width="64" height="64">
    <properties>
     <property name="speed" type="int" value="0"/>
    </properties>
   </object>
-  <object id="177" name="saw" x="1472" y="96" width="64" height="64">
+  <object id="177" name="saw" x="1472" y="112" width="64" height="64">
    <properties>
     <property name="speed" type="int" value="0"/>
    </properties>
