@@ -98,13 +98,12 @@ class AllSprites(pygame.sprite.Group):
     def draw(self, target_pos, dt):
         if self.sky:
             self.cloud_timer.update()
+            self.draw_sky()
+            self.draw_large_cloud(dt)
+        
         self.offset.x = -(target_pos[0] - WINDOW_WIDTH / 2)
         self.offset.y = -(target_pos[1] - WINDOW_HEIGHT / 2)
         self.camera_constraint()
-
-        if self.sky:
-            self.draw_sky()
-            self.draw_large_cloud(dt)
 
         for sprite in sorted(self, key = lambda sprite: sprite.z):
             offset_pos = sprite.rect.topleft + self.offset
