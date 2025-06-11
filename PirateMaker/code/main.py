@@ -5,7 +5,7 @@ from editor import Editor
 class Main:
 	def __init__(self):
 		pygame.init()
-		self.display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+		self.display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT)) # type: ignore
 		self.clock = pygame.time.Clock()
 
 		self.editor = Editor()
