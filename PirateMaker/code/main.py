@@ -1,6 +1,5 @@
 import pygame
 from settings import *
-
 from editor import Editor
 
 class Main:
