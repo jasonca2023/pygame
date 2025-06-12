@@ -1,0 +1,27 @@
+import pygame
+from settings import *
+
+class Menu:
+    def __init__(self):
+        self.display_surface = pygame.display.get_surface()
+        self.create_buttons()
+    
+    def create_buttons(self):
+        size = 180
+        margin = 6
+        topleft = (WINDOW_WIDTH - size - margin, WINDOW_HEIGHT - size - margin)
+        self.rect = pygame.FRect(topleft, (size, size))
+
+        generic_button_rect = pygame.FRect(self.rect.topleft, (self.rect.width / 2, self.rect.height / 2))
+        button_margin = 5
+        self.tile_button_rect = generic_button_rect.copy().inflate(-button_margin, -button_margin)
+        self.coin_button_rect = generic_button_rect.move(self.rect.height / 2, 0).inflate(-button_margin, -button_margin)
+        self.enemy_button_rect = generic_button_rect.move(self.rect.height / 2, self.rect.width / 2).inflate(-button_margin, -button_margin)
+        self.palm_button_rect = generic_button_rect.move(0, self.rect.width / 2).inflate(-button_margin, -button_margin)
+
+    def display(self):
+        #pygame.draw.rect(self.display_surface, 'black', self.rect)
+        pygame.draw.rect(self.display_surface, 'yellow', self.tile_button_rect)
+        pygame.draw.rect(self.display_surface, 'blue', self.coin_button_rect)
+        pygame.draw.rect(self.display_surface, 'green', self.enemy_button_rect)
+        pygame.draw.rect(self.display_surface, 'red', self.palm_button_rect)
