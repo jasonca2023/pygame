@@ -82,6 +82,7 @@ pygame.init()
 cell_size = 40
 cell_number = 17
 screen = pygame.display.set_mode((cell_size * cell_number, cell_size * cell_number))
+pygame.display.set_caption('Snake')
 clock = pygame.time.Clock()
 
 main_game = MAIN()
