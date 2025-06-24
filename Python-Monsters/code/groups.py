@@ -8,7 +8,7 @@ class AllSprites(pygame.sprite.Group):
 		super().__init__()
 		self.display_surface = pygame.display.get_surface()
 		self.offset = vector()
-		self.shadow_surf = pygame.image.load('/Users/jasonca2/Documents/Pygame/Python-Monsters/graphics/other/shadow.png')
+		self.shadow_surf = pygame.image.load('../graphics/other/shadow.png')
 		self.notice_surf = import_image('..', 'graphics', 'ui', 'notice')
 
 	def draw(self, player):
