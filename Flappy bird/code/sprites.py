@@ -6,7 +6,7 @@ class BG(pygame.sprite.Sprite):
     def __init__(self, groups, scaleFactor):
         super().__init__(groups)
         
-        bgImage = pygame.image.load('/Users/jasonca2/Documents/Pygame/Flappy bird/graphics/background.png').convert()
+        bgImage = pygame.image.load('../graphics/background.png').convert()
 
         fullHeight = bgImage.get_height() * scaleFactor
         fullWidth = bgImage.get_width() * scaleFactor
@@ -31,7 +31,7 @@ class Ground(pygame.sprite.Sprite):
 
         self.sprite_type = 'ground'
         
-        groundSurf = pygame.image.load('/Users/jasonca2/Documents/Pygame/Flappy bird/graphics/ground.png').convert_alpha()
+        groundSurf = pygame.image.load('../graphics/ground.png').convert_alpha()
         fullSizeImage = pygame.transform.scale(groundSurf, pygame.math.Vector2(groundSurf.get_size()) * scaleFactor)
 
         self.image = pygame.Surface((fullSizeImage.get_width() * 2, fullSizeImage.get_height()), pygame.SRCALPHA)
@@ -65,13 +65,13 @@ class Plane(pygame.sprite.Sprite):
 
         self.mask = pygame.mask.from_surface(self.image)
 
-        self.jumpSound = pygame.mixer.Sound('/Users/jasonca2/Documents/Pygame/Flappy bird/sound/jump.wav')
+        self.jumpSound = pygame.mixer.Sound('../sound/jump.wav')
         self.jumpSound.set_volume(0.05)
         
     def import_frames(self, scaleFactor):
         self.frames = []
         for i in range(2):
-            surf = pygame.image.load(f'/Users/jasonca2/Documents/Pygame/Flappy bird/graphics/plane{i}.png').convert_alpha()
+            surf = pygame.image.load(f'../graphics/plane{i}.png').convert_alpha()
             scaledSurface = pygame.transform.scale(surf, pygame.math.Vector2(surf.get_size()) * scaleFactor)
             self.frames.append(scaledSurface)
 
@@ -107,7 +107,7 @@ class Obstacle(pygame.sprite.Sprite):
         self.sprite_type = 'obstacle'
 
         orientation = choice(('up', 'down'))
-        surf = pygame.image.load(f'/Users/jasonca2/Documents/Pygame/Flappy bird/graphics/obstacles/{choice((0, 1))}.png').convert_alpha()
+        surf = pygame.image.load(f'../graphics/obstacles/{choice((0, 1))}.png').convert_alpha()
         self.image = pygame.transform.scale(surf, pygame.math.Vector2(surf.get_size()) * scaleFactor)
 
         x = windowWidth + randint(40, 100)
