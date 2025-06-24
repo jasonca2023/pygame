@@ -75,9 +75,9 @@ def coast_importer(cols, rows, *path):
 	 }
 
 	for index, terrain in enumerate(terrains):
-	 	new_dict[terrain] = {}
-	 	for key, pos in sides.items():
-	 		new_dict[terrain][key] = [frame_dict[(pos[0] + index * 3, pos[1] + row)] for row in range(0, rows, 3)]
+		new_dict[terrain] = {}
+		for key, pos in sides.items():
+			new_dict[terrain][key] = [frame_dict[(pos[0] + index * 3, pos[1] + row)] for row in range(0, rows, 3)]
 	return new_dict
 
 def tmx_importer(*path):
