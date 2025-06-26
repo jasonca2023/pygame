@@ -47,7 +47,7 @@ class Level:
 		self.pearl_sound = audio_files['pearl']
 		self.pearl_sound.set_volume(0.5)
 
-		self.sound_timer = Timer(250)
+		self.sound_timer = Timer(500)
 
 	def setup(self, tmx_map, level_frames, audio_files):
 		for layer in ['BG', 'Terrain', 'FG', 'Platforms']:
