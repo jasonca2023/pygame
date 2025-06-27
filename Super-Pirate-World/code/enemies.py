@@ -16,6 +16,9 @@ class Tooth(pygame.sprite.Sprite):
 
         self.hit_timer = Timer(250)
 
+        if not [sprite for sprite in collision_sprites if sprite.rect.collidepoint(self.rect.midbottom + vector(0, 10))]:
+            self.kill()
+
     def reverse(self):
         if not self.hit_timer.active:
             self.direction *= -1
