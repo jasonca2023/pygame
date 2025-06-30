@@ -32,12 +32,11 @@ class Game:
 		self.extra_spawn_time = randint(40, 80)
 
 		music = pygame.mixer.Sound('../audio/music.wav')
-		music.set_volume(0.2)
 		music.play(loops = -1)
 		self.laser_sound = pygame.mixer.Sound('../audio/laser.wav')
-		self.laser_sound.set_volume(0.5)
+		self.laser_sound.set_volume(0.1)
 		self.explosion_sound = pygame.mixer.Sound('../audio/explosion.wav')
-		self.explosion_sound.set_volume(0.3)
+		self.explosion_sound.set_volume(0.25)
 
 	def create_obstacle(self, x_start, y_start, offset_x):
 		for row_index, row in enumerate(self.shape):
@@ -186,6 +185,7 @@ if __name__ == '__main__':
 	screen_width = 600
 	screen_height = 600
 	screen = pygame.display.set_mode((screen_width, screen_height))
+	pygame.display.set_caption('Space Invaders')
 	clock = pygame.time.Clock()
 	game = Game()
 	crt = CRT()
