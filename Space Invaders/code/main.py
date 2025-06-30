@@ -178,7 +178,7 @@ class CRT:
 			pygame.draw.line(self.tv, 'black', (0, y_pos), (screen_width, y_pos), 1)
 
 	def draw(self):
-		self.tv.set_alpha(randint(60, 90))
+		self.tv.set_alpha(randint(80, 120))
 		self.create_crt_lines()
 		screen.blit(self.tv, (0, 0))
 
