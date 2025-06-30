@@ -1,10 +1,11 @@
 import pygame 
 from laser import Laser
+from os.path import join
 
 class Player(pygame.sprite.Sprite):
 	def __init__(self, pos, constraint, speed):
 		super().__init__()
-		self.image = pygame.image.load('../graphics/player.png').convert_alpha()
+		self.image = pygame.image.load(join('..', 'graphics', 'player.png')).convert_alpha()
 		self.rect = self.image.get_rect(midbottom = pos)
 		self.speed = speed
 		self.max_x_constraint = constraint
@@ -14,7 +15,7 @@ class Player(pygame.sprite.Sprite):
 
 		self.lasers = pygame.sprite.Group()
 
-		self.laser_sound = pygame.mixer.Sound('../audio/laser.wav')
+		self.laser_sound = pygame.mixer.Sound(join('..', 'audio', 'laser.wav'))
 		self.laser_sound.set_volume(0.1)
 
 	def get_input(self):

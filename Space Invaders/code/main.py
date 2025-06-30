@@ -4,6 +4,7 @@ import obstacle
 from alien import Alien, Extra
 from random import choice, randint
 from laser import Laser
+from os.path import join
  
 class Game:
 	def __init__(self):
@@ -11,10 +12,10 @@ class Game:
 		self.player = pygame.sprite.GroupSingle(player_sprite)
 
 		self.lives = 3
-		self.live_surf = pygame.image.load('../graphics/player.png').convert_alpha()
+		self.live_surf = pygame.image.load(join('..', 'graphics', 'player.png')).convert_alpha()
 		self.live_x_start_pos = screen_width - (self.live_surf.get_size()[0] * 2 + 20)
 		self.score = 0
-		self.font = pygame.font.Font('../font/Pixeled.ttf', 20)
+		self.font = pygame.font.Font(join('..', 'font', 'Pixeled.ttf'), 20)
 
 		self.shape = obstacle.shape
 		self.block_size = 6
@@ -31,12 +32,12 @@ class Game:
 		self.extra = pygame.sprite.GroupSingle()
 		self.extra_spawn_time = randint(60, 100)
 
-		music = pygame.mixer.Sound('../audio/music.wav')
+		music = pygame.mixer.Sound(join('..', 'audio', 'music.wav'))
 		music.set_volume(0.8)
 		music.play(loops = -1)
-		self.laser_sound = pygame.mixer.Sound('../audio/laser.wav')
+		self.laser_sound = pygame.mixer.Sound(join('..', 'audio', 'laser.wav'))
 		self.laser_sound.set_volume(0.1)
-		self.explosion_sound = pygame.mixer.Sound('../audio/explosion.wav')
+		self.explosion_sound = pygame.mixer.Sound(join('..', 'audio', 'explosion.wav'))
 		self.explosion_sound.set_volume(0.08)
 
 	def create_obstacle(self, x_start, y_start, offset_x):
@@ -141,9 +142,15 @@ class Game:
 
 	def victory_message(self):
 		if not self.aliens.sprites():
+			pygame.mixer.fadeout(5000)
+			screen.fill('#33332f')
 			victory_surf = self.font.render('You won', False, 'white')
 			victory_rect = victory_surf.get_rect(center = (screen_width / 2, screen_height / 2))
 			screen.blit(victory_surf, victory_rect)
+			pygame.display.update()
+			pygame.time.wait(5000)
+			pygame.quit()
+			sys.exit()
 
 	def run(self):
 		self.player.update()
@@ -167,7 +174,7 @@ class Game:
 
 class CRT:
 	def __init__(self):
-		self.tv = pygame.image.load('../graphics/tv.png').convert_alpha()
+		self.tv = pygame.image.load(join('..', 'graphics', 'tv.png')).convert_alpha()
 		self.tv = pygame.transform.scale(self.tv, (screen_width, screen_height))
 
 	def create_crt_lines(self):
