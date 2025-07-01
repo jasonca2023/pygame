@@ -119,6 +119,13 @@ class Game:
 					laser.kill()
 					self.lives -= 1
 					if self.lives <= 0:
+						pygame.mixer.fadeout(5000)
+						screen.fill('#33332f')
+						defeat_surf = self.font.render('You Lose', False, 'white')
+						defeat_rect = defeat_surf.get_rect(center = (screen_width / 2, screen_height / 2))
+						screen.blit(defeat_surf, defeat_rect)
+						pygame.display.update()
+						pygame.time.wait(5000)
 						pygame.quit()
 						sys.exit()
 
@@ -127,9 +134,16 @@ class Game:
 				pygame.sprite.spritecollide(alien, self.blocks, True)
 
 				if pygame.sprite.spritecollide(alien, self.player, False):
+					pygame.mixer.fadeout(5000)
+					screen.fill('#33332f')
+					defeat_surf = self.font.render('You Lose', False, 'white')
+					defeat_rect = defeat_surf.get_rect(center = (screen_width / 2, screen_height / 2))
+					screen.blit(defeat_surf, defeat_rect)
+					pygame.display.update()
+					pygame.time.wait(5000)
 					pygame.quit()
 					sys.exit()
-	
+
 	def display_lives(self):
 		for live in range(self.lives - 1):
 			x = self.live_x_start_pos + (live * (self.live_surf.get_size()[0] + 10))
@@ -144,9 +158,12 @@ class Game:
 		if not self.aliens.sprites():
 			pygame.mixer.fadeout(5000)
 			screen.fill('#33332f')
-			victory_surf = self.font.render('You won', False, 'white')
+			victory_surf = self.font.render('You Win', False, 'white')
 			victory_rect = victory_surf.get_rect(center = (screen_width / 2, screen_height / 2))
+			score_surf = self.font.render(f'score: {self.score}', False, 'white')
+			score_rect = score_surf.get_rect(center = (screen_width / 2, screen_height / 2 + 40))
 			screen.blit(victory_surf, victory_rect)
+			screen.blit(score_surf, score_rect)
 			pygame.display.update()
 			pygame.time.wait(5000)
 			pygame.quit()
