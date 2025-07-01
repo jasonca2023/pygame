@@ -15,7 +15,7 @@ class Game:
 		self.live_surf = pygame.image.load(join('..', 'graphics', 'player.png')).convert_alpha()
 		self.live_x_start_pos = screen_width - (self.live_surf.get_size()[0] * 2 + 20)
 		self.score = 0
-		self.font = pygame.font.Font(join('..', 'font', 'Pixeled.ttf'), 20)
+		self.font = pygame.font.Font(join('..', 'font', 'Monaco.ttf'), 30)
 
 		self.shape = obstacle.shape
 		self.block_size = 6
@@ -90,7 +90,7 @@ class Game:
 		self.extra_spawn_time -= 1
 		if self.extra_spawn_time <= 0:
 			self.extra.add(Extra(choice(['right', 'left']), screen_width))
-			self.extra_spawn_time = randint(40, 800)
+			self.extra_spawn_time = randint(400, 1000)
 
 	def collision_checks(self):
 		if self.player.sprite.lasers:
@@ -150,8 +150,8 @@ class Game:
 			screen.blit(self.live_surf, (x, 8))
 
 	def display_score(self):
-		score_surf = self.font.render(f'score: {self.score}', False, 'white')
-		score_rect = score_surf.get_rect(topleft = (10, -10))
+		score_surf = self.font.render(f'Score: {self.score}', False, 'white')
+		score_rect = score_surf.get_rect(topleft = (10, 10))
 		screen.blit(score_surf, score_rect)
 
 	def victory_message(self):
@@ -159,9 +159,9 @@ class Game:
 			pygame.mixer.fadeout(5000)
 			screen.fill('#33332f')
 			victory_surf = self.font.render('You Win', False, 'white')
-			victory_rect = victory_surf.get_rect(center = (screen_width / 2, screen_height / 2))
-			score_surf = self.font.render(f'score: {self.score}', False, 'white')
-			score_rect = score_surf.get_rect(center = (screen_width / 2, screen_height / 2 + 40))
+			victory_rect = victory_surf.get_rect(center = (screen_width / 2, screen_height / 2 - 20))
+			score_surf = self.font.render(f'Score: {self.score}', False, 'white')
+			score_rect = score_surf.get_rect(center = (screen_width / 2, screen_height / 2 + 20))
 			screen.blit(victory_surf, victory_rect)
 			screen.blit(score_surf, score_rect)
 			pygame.display.update()
