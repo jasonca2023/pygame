@@ -120,7 +120,8 @@ class Game:
 					self.lives -= 1
 					if self.lives <= 0:
 						pygame.mixer.fadeout(5000)
-						screen.fill('#33332f')
+						screen.fill('#1e1e1e')
+						crt.draw()
 						defeat_surf = self.font.render('You Lose', True, 'white')
 						defeat_rect = defeat_surf.get_rect(center = (screen_width / 2, screen_height / 2))
 						screen.blit(defeat_surf, defeat_rect)
@@ -135,7 +136,8 @@ class Game:
 
 				if pygame.sprite.spritecollide(alien, self.player, False):
 					pygame.mixer.fadeout(5000)
-					screen.fill('#33332f')
+					screen.fill('#1e1e1e')
+					crt.draw()
 					defeat_surf = self.font.render('You Lose', True, 'white')
 					defeat_rect = defeat_surf.get_rect(center = (screen_width / 2, screen_height / 2))
 					screen.blit(defeat_surf, defeat_rect)
@@ -157,7 +159,8 @@ class Game:
 	def victory_message(self):
 		if not self.aliens.sprites():
 			pygame.mixer.fadeout(5000)
-			screen.fill('#33332f')
+			screen.fill('#1e1e1e')
+			crt.draw()
 			victory_surf = self.font.render('You Win', True, 'white')
 			victory_rect = victory_surf.get_rect(center = (screen_width / 2, screen_height / 2 - 20))
 			score_surf = self.font.render(f'Score: {self.score}', True, 'white')
@@ -213,8 +216,8 @@ if __name__ == '__main__':
 	screen = pygame.display.set_mode((screen_width, screen_height))
 	pygame.display.set_caption('Space Invaders')
 	clock = pygame.time.Clock()
-	game = Game()
 	crt = CRT()
+	game = Game()
 
 	ALIENLASER = pygame.USEREVENT + 1
 	pygame.time.set_timer(ALIENLASER, 800)
@@ -227,7 +230,7 @@ if __name__ == '__main__':
 			if event.type == ALIENLASER:
 				game.alien_shoot()
 
-		screen.fill((30, 30, 30))
+		screen.fill('#1e1e1e')
 		game.run()
 		crt.draw()
 			
