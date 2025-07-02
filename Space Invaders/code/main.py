@@ -33,7 +33,7 @@ class Game:
 		self.extra_spawn_time = randint(60, 100)
 
 		music = pygame.mixer.Sound(join('..', 'audio', 'music.wav'))
-		music.set_volume(0.45)
+		music.set_volume(0.8)
 		music.play(loops = -1)
 		self.laser_sound = pygame.mixer.Sound(join('..', 'audio', 'laser.wav'))
 		self.laser_sound.set_volume(0.1)
