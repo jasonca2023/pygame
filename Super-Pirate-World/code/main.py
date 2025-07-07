@@ -109,7 +109,7 @@ class Game:
 			sys.exit()
 
 	def check_win(self):
-		if self.data.current_level == 5 and isinstance((self.current_stage), Overworld):
+		if self.data.unlocked_level > 5 and isinstance((self.current_stage), Overworld):
 			pygame.mixer.fadeout(5000)
 			self.display_surface.fill('#33323d')
 			win_text = self.win_font.render('YOU WIN!!', True, '#ebd278')
