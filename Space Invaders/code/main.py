@@ -119,32 +119,14 @@ class Game:
 					laser.kill()
 					self.lives -= 1
 					if self.lives <= 0:
-						pygame.mixer.fadeout(5000)
-						screen.fill('#1e1e1e')
-						defeat_surf = self.font.render('You Lose', True, 'white')
-						defeat_rect = defeat_surf.get_rect(center = (screen_width / 2, screen_height / 2))
-						screen.blit(defeat_surf, defeat_rect)
-						crt.draw()
-						pygame.display.update()
-						pygame.time.wait(5000)
-						pygame.quit()
-						sys.exit()
+						self.defeat_message()
 
 		if self.aliens:
 			for alien in self.aliens:
 				pygame.sprite.spritecollide(alien, self.blocks, True)
 
 				if pygame.sprite.spritecollide(alien, self.player, False):
-					pygame.mixer.fadeout(5000)
-					screen.fill('#1e1e1e')
-					defeat_surf = self.font.render('You Lose', True, 'white')
-					defeat_rect = defeat_surf.get_rect(center = (screen_width / 2, screen_height / 2))
-					screen.blit(defeat_surf, defeat_rect)
-					crt.draw()
-					pygame.display.update()
-					pygame.time.wait(5000)
-					pygame.quit()
-					sys.exit()
+					self.defeat_message()
 
 	def display_lives(self):
 		for live in range(self.lives - 1):
@@ -171,6 +153,18 @@ class Game:
 			pygame.time.wait(5000)
 			pygame.quit()
 			sys.exit()
+	
+	def defeat_message(self):
+		pygame.mixer.fadeout(5000)
+		screen.fill('#1e1e1e')
+		defeat_surf = self.font.render('You Lose', True, 'white')
+		defeat_rect = defeat_surf.get_rect(center = (screen_width / 2, screen_height / 2))
+		screen.blit(defeat_surf, defeat_rect)
+		crt.draw()
+		pygame.display.update()
+		pygame.time.wait(5000)
+		pygame.quit()
+		sys.exit()
 
 	def run(self):
 		self.player.update()
