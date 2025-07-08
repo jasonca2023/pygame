@@ -3,7 +3,7 @@ from settings import *
 from random import choice, randint
 
 class Upgrade(pygame.sprite.Sprite):
-	def __init__(self,pos,upgrade_type,groups):
+	def __init__(self, pos, upgrade_type, groups):
 		super().__init__(groups)
 		self.upgrade_type = upgrade_type
 		self.image = pygame.image.load(f'../graphics/upgrades/{upgrade_type}.png').convert_alpha()
@@ -12,7 +12,7 @@ class Upgrade(pygame.sprite.Sprite):
 		self.pos = pygame.math.Vector2(self.rect.topleft)
 		self.speed = 300
 
-	def update(self,dt):
+	def update(self, dt):
 		self.pos.y += self.speed * dt
 		self.rect.y = round(self.pos.y)
 
@@ -20,7 +20,7 @@ class Upgrade(pygame.sprite.Sprite):
 			self.kill()
 
 class Projectile(pygame.sprite.Sprite):
-	def __init__(self,pos,surface,groups):
+	def __init__(self, pos, surface, groups):
 		super().__init__(groups)
 		self.image = surface
 		self.rect = self.image.get_rect(midbottom = pos)
@@ -28,7 +28,7 @@ class Projectile(pygame.sprite.Sprite):
 		self.pos = pygame.math.Vector2(self.rect.topleft)
 		self.speed = 300
 
-	def update(self,dt):
+	def update(self, dt):
 		self.pos.y -= self.speed * dt
 		self.rect.y = round(self.pos.y)
 
@@ -36,16 +36,14 @@ class Projectile(pygame.sprite.Sprite):
 			self.kill()
 
 class Player(pygame.sprite.Sprite):
-	def __init__(self,groups,surfacemaker):
+	def __init__(self, groups, surfacemaker):
 		super().__init__(groups)
 
-		# setup
 		self.display_surface = pygame.display.get_surface()
 		self.surfacemaker = surfacemaker
-		self.image = surfacemaker.get_surf('player',(WINDOW_WIDTH // 10,WINDOW_HEIGHT // 20))
+		self.image = surfacemaker.get_surf('player', (WINDOW_WIDTH // 10, WINDOW_HEIGHT // 20))
 
-		# position
-		self.rect = self.image.get_rect(midbottom = (WINDOW_WIDTH // 2,WINDOW_HEIGHT - 20))
+		self.rect = self.image.get_rect(midbottom = (WINDOW_WIDTH // 2, WINDOW_HEIGHT - 20))
 		self.old_rect = self.rect.copy()
 		self.direction = pygame.math.Vector2()
 		self.pos = pygame.math.Vector2(self.rect.topleft)
@@ -53,7 +51,6 @@ class Player(pygame.sprite.Sprite):
 
 		self.hearts = 3
 
-		# laser
 		self.laser_amount = 2
 		self.laser_surf = pygame.image.load('../graphics/other/laser.png').convert_alpha()
 		self.laser_rects = []
@@ -75,7 +72,7 @@ class Player(pygame.sprite.Sprite):
 			self.rect.left = 0
 			self.pos.x = self.rect.x
 
-	def upgrade(self,upgrade_type):
+	def upgrade(self, upgrade_type):
 		if upgrade_type == 'speed':
 			self.speed += 50
 		if upgrade_type == 'heart':
@@ -83,7 +80,7 @@ class Player(pygame.sprite.Sprite):
 
 		if upgrade_type == 'size':
 			new_width = self.rect.width * 1.1
-			self.image = self.surfacemaker.get_surf('player',(new_width,self.rect.height))
+			self.image = self.surfacemaker.get_surf('player', (new_width, self.rect.height))
 			self.rect = self.image.get_rect(center = self.rect.center)
 			self.pos.x = self.rect.x
 
@@ -96,13 +93,13 @@ class Player(pygame.sprite.Sprite):
 			divider_length = self.rect.width / (self.laser_amount + 1)
 			for i in range(self.laser_amount):
 				x = self.rect.left + divider_length * (i + 1)
-				laser_rect = self.laser_surf.get_rect(midbottom = (x,self.rect.top))
+				laser_rect = self.laser_surf.get_rect(midbottom = (x, self.rect.top))
 				self.laser_rects.append(laser_rect)
 
 			for laser_rect in self.laser_rects:
-				self.display_surface.blit(self.laser_surf,laser_rect)
+				self.display_surface.blit(self.laser_surf, laser_rect)
 
-	def update(self,dt):
+	def update(self, dt):
 		self.old_rect = self.rect.copy()
 		self.input()
 		self.pos.x += self.direction.x * self.speed * dt
@@ -111,27 +108,21 @@ class Player(pygame.sprite.Sprite):
 		self.display_lasers()
 
 class Ball(pygame.sprite.Sprite):
-	def __init__(self,groups,player,blocks):
+	def __init__(self, groups, player, blocks):
 		super().__init__(groups)
 
-		# collision objects
 		self.player = player
 		self.blocks = blocks
 
-		# graphics setup
 		self.image = pygame.image.load('../graphics/other/ball.png').convert_alpha()
 
-		# position setup
 		self.rect = self.image.get_rect(midbottom = player.rect.midtop)
 		self.old_rect = self.rect.copy()
 		self.pos = pygame.math.Vector2(self.rect.topleft)
-		self.direction = pygame.math.Vector2((choice((1,-1)),-1))
+		self.direction = pygame.math.Vector2((choice((1, -1)), -1))
 		self.speed = 400
 
-		# active
 		self.active = False
-
-		# sounds
 
 		self.impact_sound = pygame.mixer.Sound('../sounds/impact.wav')
 		self.impact_sound.set_volume(0.1)
@@ -139,7 +130,7 @@ class Ball(pygame.sprite.Sprite):
 		self.fail_sound = pygame.mixer.Sound('../sounds/fail.wav')
 		self.fail_sound.set_volume(0.1)
 
-	def window_collision(self,direction):
+	def window_collision(self, direction):
 		if direction == 'horizontal':
 			if self.rect.left < 0:
 				self.rect.left = 0
@@ -162,10 +153,9 @@ class Ball(pygame.sprite.Sprite):
 				self.direction.y = -1
 				self.player.hearts -= 1
 				self.fail_sound.play()
-				
-	def collision(self,direction):
-		# find overlapping objects 
-		overlap_sprites = pygame.sprite.spritecollide(self,self.blocks,False)
+
+	def collision(self, direction):
+		overlap_sprites = pygame.sprite.spritecollide(self, self.blocks, False)
 		if self.rect.colliderect(self.player.rect):
 			overlap_sprites.append(self.player)
 
@@ -184,7 +174,7 @@ class Ball(pygame.sprite.Sprite):
 						self.direction.x *= -1
 						self.impact_sound.play()
 
-					if getattr(sprite,'health',None):
+					if getattr(sprite, 'health', None):
 						sprite.get_damage(1)
 
 
@@ -202,25 +192,22 @@ class Ball(pygame.sprite.Sprite):
 						self.direction.y *= -1
 						self.impact_sound.play()
 
-					if getattr(sprite,'health',None):
+					if getattr(sprite, 'health', None):
 						sprite.get_damage(1)
 
-	def update(self,dt):
+	def update(self, dt):
 		if self.active:
 
 			if self.direction.magnitude() != 0:
 				self.direction = self.direction.normalize()
 
-			# create old rect
 			self.old_rect = self.rect.copy()
 
-			# horizontal movement + collision
 			self.pos.x += self.direction.x * self.speed * dt
 			self.rect.x = round(self.pos.x)
 			self.collision('horizontal')
 			self.window_collision('horizontal')
 
-			# vertical movement + collision
 			self.pos.y += self.direction.y * self.speed * dt
 			self.rect.y= round(self.pos.y)
 			self.collision('vertical')
@@ -230,25 +217,23 @@ class Ball(pygame.sprite.Sprite):
 			self.pos = pygame.math.Vector2(self.rect.topleft)
 
 class Block(pygame.sprite.Sprite):
-	def __init__(self,block_type,pos,groups,surfacemaker,create_upgrade):
+	def __init__(self, block_type, pos, groups, surfacemaker, create_upgrade):
 		super().__init__(groups)
 		self.surfacemaker = surfacemaker
-		self.image = self.surfacemaker.get_surf(COLOR_LEGEND[block_type],(BLOCK_WIDTH, BLOCK_HEIGHT))
+		self.image = self.surfacemaker.get_surf(COLOR_LEGEND[block_type], (BLOCK_WIDTH, BLOCK_HEIGHT))
 		self.rect = self.image.get_rect(topleft = pos)
 		self.old_rect = self.rect.copy()
 
-		# damage information
 		self.health = int(block_type)
 
-		# upgrade
 		self.create_upgrade = create_upgrade
 
-	def get_damage(self,amount):
+	def get_damage(self, amount):
 		self.health -= amount
 
 		if self.health > 0:
-			self.image = self.surfacemaker.get_surf(COLOR_LEGEND[str(self.health)],(BLOCK_WIDTH, BLOCK_HEIGHT))
+			self.image = self.surfacemaker.get_surf(COLOR_LEGEND[str(self.health)], (BLOCK_WIDTH, BLOCK_HEIGHT))
 		else:
-			if randint(0,10) < 9:
+			if randint(0, 10) < 9:
 				self.create_upgrade(self.rect.center)
 			self.kill()
