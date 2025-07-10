@@ -55,7 +55,7 @@ class Plane(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect(midleft = (WINDOW_WIDTH / 20, WINDOW_HEIGHT / 2))
 		self.pos = pygame.math.Vector2(self.rect.topleft)
 
-		self.gravity = 600
+		self.gravity = 700
 		self.direction = 0
 
 		self.mask = pygame.mask.from_surface(self.image)
