@@ -85,6 +85,9 @@ screen = pygame.display.set_mode((cell_size * cell_number, cell_size * cell_numb
 pygame.display.set_caption('Snake')
 clock = pygame.time.Clock()
 
+bg_music = pygame.mixer.Sound('../audio/music.wav')
+bg_music.play(loops = -1)
+
 main_game = MAIN()
 
 SCREEN_UPDATE = pygame.USEREVENT
