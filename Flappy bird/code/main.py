@@ -31,8 +31,9 @@ class Game:
 		self.menu_rect = self.menu_surf.get_rect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
 
 		self.music = pygame.mixer.Sound('../sounds/music.wav')
-		self.music.set_volume(5)
 		self.music.play(loops = -1)
+		self.hit_sound = pygame.mixer.Sound('../sounds/hit.wav')
+		self.hit_sound.set_volume(0.2)
 
 	def collisions(self):
 		if pygame.sprite.spritecollide(self.plane, self.collision_sprites, False, pygame.sprite.collide_mask) \
@@ -40,6 +41,7 @@ class Game:
 			for sprite in self.collision_sprites.sprites():
 				if sprite.sprite_type == 'obstacle':
 					sprite.kill()
+			self.hit_sound.play()
 			self.active = False
 			self.plane.kill()
 
