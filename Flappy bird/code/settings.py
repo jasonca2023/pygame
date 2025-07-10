@@ -1,3 +1,3 @@
-windowWidth = 480
-windowHeight = 800
-framerate = 120
+WINDOW_WIDTH = 480
+WINDOW_HEIGHT = 800
+FRAMERATE = 120
