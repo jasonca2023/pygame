@@ -84,7 +84,11 @@ opponentSpeed = 10
 
 playerScore = 0
 opponentScore = 0
-gameFont = pygame.font.Font("freesansbold.ttf", 32)
+gameFont = pygame.font.Font('freesansbold.ttf', 32)
+
+bg_music = pygame.mixer.Sound('../audio/music.wav')
+bg_music.set_volume(0.7)
+bg_music.play(-1)
 
 scoreTime = 1
 
