@@ -3,7 +3,6 @@ from os import walk
 
 def import_folder(path):
     surface_list = []
-    
     for _, __, img_files in walk(path):
         img_files.sort(key = lambda name: int(name.split('.')[0]))
         for image in img_files:
