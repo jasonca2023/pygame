@@ -466,17 +466,17 @@
   <object id="191" name="Large" gid="148" x="1686" y="532" width="96" height="124"/>
   <object id="192" name="Small" gid="149" x="1388" y="504" width="56" height="116"/>
   <object id="193" name="Small" gid="149" x="1632" y="876" width="56" height="116"/>
-  <object id="194" name="Small" gid="149" x="1630" y="502" width="56" height="116"/>
+  <object id="194" name="Small" gid="149" x="1588" y="496" width="56" height="116"/>
   <object id="195" name="Small" gid="149" x="2028" y="454" width="56" height="116"/>
   <object id="196" name="Small" gid="149" x="2254" y="800" width="56" height="116"/>
   <object id="197" name="Small" gid="149" x="2468" y="546" width="56" height="116"/>
   <object id="198" name="Small" gid="149" x="2380" y="514" width="56" height="116"/>
   <object id="199" name="Small" gid="149" x="2460" y="836" width="56" height="116"/>
   <object id="200" name="Small" gid="149" x="2340" y="854" width="56" height="116"/>
-  <object id="201" name="Small" gid="149" x="2440" y="1092" width="56" height="116"/>
+  <object id="201" name="Small" gid="149" x="2480" y="1094" width="56" height="116"/>
   <object id="202" name="Small" gid="149" x="2420" y="1358" width="56" height="116"/>
   <object id="203" name="Small" gid="149" x="2422" y="1274" width="56" height="116"/>
-  <object id="204" name="Small" gid="149" x="2414" y="1602" width="56" height="116"/>
+  <object id="204" name="Small" gid="149" x="2482" y="1634" width="56" height="116"/>
   <object id="205" name="Small" gid="149" x="2476" y="1516" width="56" height="116"/>
   <object id="206" name="Small" gid="149" x="2358" y="1460" width="56" height="116"/>
   <object id="207" name="Small" gid="149" x="2416" y="1860" width="56" height="116"/>
@@ -501,13 +501,12 @@
   <object id="154" type="decor" gid="143" x="1396.17" y="779.833" width="64" height="60"/>
   <object id="155" type="decor" gid="143" x="2186.17" y="833.833" width="64" height="60"/>
   <object id="156" type="decor" gid="143" x="1692.17" y="983.833" width="64" height="60"/>
-  <object id="157" type="decor" gid="150" x="1603.84" y="538.166" width="44" height="48"/>
+  <object id="157" type="decor" gid="150" x="1523.84" y="488.166" width="44" height="48"/>
   <object id="158" type="decor" gid="150" x="1816.5" y="704.833" width="44" height="48"/>
-  <object id="159" type="decor" gid="150" x="2186.84" y="745.5" width="44" height="48"/>
+  <object id="159" type="decor" gid="150" x="2140.84" y="761.5" width="44" height="48"/>
   <object id="160" type="decor" gid="150" x="2405.84" y="686.5" width="44" height="48"/>
-  <object id="161" type="decor" gid="150" x="2393.17" y="1120.83" width="44" height="48"/>
+  <object id="161" type="decor" gid="150" x="2331.17" y="1124.83" width="44" height="48"/>
   <object id="162" type="decor" gid="150" x="2502.5" y="1418.5" width="44" height="48"/>
-  <object id="163" type="decor" gid="150" x="2390.17" y="1642.16" width="44" height="48"/>
   <object id="164" type="decor" gid="151" x="2469.84" y="1165.5" width="40" height="44"/>
   <object id="165" type="decor" gid="151" x="1917" y="748.833" width="40" height="44"/>
   <object id="166" type="decor" gid="152" x="1942.17" y="808" width="52" height="52"/>
@@ -518,10 +517,10 @@
   <object id="171" type="decor" gid="151" x="1728.84" y="585.833" width="40" height="44"/>
   <object id="172" type="decor" gid="152" x="2353.17" y="557.166" width="52" height="52"/>
   <object id="173" type="decor" gid="150" x="745.167" y="979.833" width="44" height="48"/>
-  <object id="174" type="decor" gid="150" x="1292.17" y="975.833" width="44" height="48"/>
+  <object id="174" type="decor" gid="150" x="1350.17" y="969.833" width="44" height="48"/>
   <object id="175" type="decor" gid="151" x="1615.17" y="910.833" width="40" height="44"/>
   <object id="176" type="decor" gid="152" x="2373.17" y="1261.83" width="52" height="52"/>
-  <object id="177" type="decor" gid="152" x="2502.17" y="1546.83" width="52" height="52"/>
+  <object id="177" type="decor" gid="152" x="1866.17" y="434.83" width="52" height="52"/>
   <object id="178" type="decor" gid="151" x="2515.17" y="1992.83" width="40" height="44"/>
   <object id="211" type="decor" gid="143" x="1752" y="624.667" width="64" height="60"/>
   <object id="252" gid="147" x="555" y="840" width="56" height="112"/>
