@@ -84,7 +84,8 @@ class Level:
 		for tree in self.tree_sprites.sprites():
 			for apple in tree.apple_sprites.sprites():
 				apple.kill()
-			tree.create_fruit()
+			if tree.alive:
+				tree.create_fruit()
 
 	def run(self, dt):
 		self.display_surface.fill('black')

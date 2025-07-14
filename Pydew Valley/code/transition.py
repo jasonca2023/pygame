@@ -12,6 +12,8 @@ class Transition:
         self.speed = -4
 
     def play(self):
+        if self.player.sleep:
+            self.player.direction = pygame.math.Vector2()
         self.color += self.speed
         if self.color <= 0:
             self.speed *= -1
