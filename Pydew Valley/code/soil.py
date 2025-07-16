@@ -1,6 +1,7 @@
 import pygame
 from settings import *
 from pytmx.util_pygame import load_pygame
+from support import *
 
 class SoilTile(pygame.sprite.Sprite):
     def __init__(self, pos, surf, groups):
@@ -14,7 +15,7 @@ class SoilLayer:
         self.all_sprites = all_sprites
         self.soil_sprites = pygame.sprite.Group()
 
-        self.soil_surf = pygame.image.load('../graphics/soil/o.png')
+        self.soil_surfs = import_folder_dict('../graphics/soil/')
 
         self.create_soil_grid()
         self.create_hit_rects()
@@ -53,8 +54,35 @@ class SoilLayer:
         for index_row, row in enumerate(self.grid):
             for index_col, cell in enumerate(row):
                 if 'X' in cell:
+                    t = 'X' in self.grid[index_row - 1][index_col]
+                    b = 'X' in self.grid[index_row + 1][index_col]
+                    r = 'X' in row[index_col + 1]
+                    l = 'X' in row[index_col - 1]
+
+                    tile_type = 'o'
+
+                    if all((t, r, b, l)): tile_type = 'x'
+
+                    if l and not any((t, r, b)): tile_type = 'r'
+                    if r and not any((t, l, b)): tile_type = 'l'
+                    if r and l and not any((t, b)): tile_type = 'lr'
+
+                    if t and not any((r, b, l)): tile_type = 'b'
+                    if b and not any((r, t, l)): tile_type = 't'
+                    if t and b and not any((r, l)): tile_type = 'tb'
+
+                    if l and b and not any((t, r)): tile_type = 'tr'
+                    if r and b and not any((t, l)): tile_type = 'tl'
+                    if l and t and not any((b, r)): tile_type = 'br'
+                    if r and t and not any((b, l)): tile_type = 'bl'
+
+                    if all((t, r, b)) and not l: tile_type = 'tbr'
+                    if all((t, l, b)) and not r: tile_type = 'tbl'
+                    if all((t, r, l)) and not b: tile_type = 'lrb'
+                    if all((r, b, l)) and not t: tile_type = 'lrt'
+
                     SoilTile(
                         pos = (index_col * TILE_SIZE, index_row * TILE_SIZE),
-                        surf = self.soil_surf,
+                        surf = self.soil_surfs[tile_type],
                         groups = [self.all_sprites, self.soil_sprites]
                         )
