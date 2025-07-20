@@ -18,7 +18,7 @@ class Menu:
         self.setup()
 
         self.index = 0
-        self.timer = Timer(100)
+        self.timer = Timer(150)
 
     def display_money(self):
         text_surf = self.font.render(f'${self.player.money}', False, 'black')
@@ -45,6 +45,9 @@ class Menu:
             self.total_height
         )
 
+        self.buy_text = self.font.render('Buy', False, 'black')
+        self.sell_text = self.font.render('Sell', False, 'black')
+
     def input(self):
         keys = pygame.key.get_pressed()
         self.timer.update()
@@ -59,6 +62,20 @@ class Menu:
             if keys[pygame.K_DOWN] and self.index < len(self.text_surfs) - 1:
                 self.index += 1
                 self.timer.activate()
+            if keys[pygame.K_SPACE]:
+                self.timer.activate()
+
+                current_item = self.options[self.index]
+                
+                if self.index <= self.sell_border:
+                    if self.player.item_inventory[current_item] > 0:
+                        self.player.item_inventory[current_item] -= 1
+                        self.player.money += SALE_PRICES[current_item]
+                else:
+                    seed_price = PURCHASE_PRICES[current_item]
+                    if self.player.money >= seed_price:
+                        self.player.seed_inventory[current_item] += 1
+                        self.player.money -= seed_price
 
     def show_entry(self, text_surf, amount, top, selected):
         bg_rect = pygame.Rect(
@@ -78,6 +95,12 @@ class Menu:
 
         if selected:
             pygame.draw.rect(self.display_surface, 'black', bg_rect, 2, 4)
+            if self.index <= self.sell_border:
+                pos_rect = self.sell_text.get_rect(midleft = (self.main_rect.left + 150, bg_rect.centery))
+                self.display_surface.blit(self.sell_text, pos_rect)
+            else:
+                pos_rect = self.buy_text.get_rect(midleft = (self.main_rect.left + 150, bg_rect.centery))
+                self.display_surface.blit(self.buy_text, pos_rect)
 
     def update(self):
         self.input()
