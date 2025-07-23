@@ -456,7 +456,7 @@
   <object id="181" name="Large" gid="148" x="1664" y="816" width="96" height="124"/>
   <object id="182" name="Large" gid="148" x="2192" y="708" width="96" height="124"/>
   <object id="183" name="Large" gid="148" x="2466" y="442" width="96" height="124"/>
-  <object id="184" name="Large" gid="148" x="2058" y="424" width="96" height="124"/>
+  <object id="184" name="Large" gid="148" x="2066" y="440" width="96" height="124"/>
   <object id="185" name="Large" gid="148" x="2380" y="1032" width="96" height="124"/>
   <object id="186" name="Large" gid="148" x="2358" y="1596" width="96" height="124"/>
   <object id="187" name="Large" gid="148" x="2452" y="1774" width="96" height="124"/>
@@ -467,7 +467,7 @@
   <object id="192" name="Small" gid="149" x="1388" y="504" width="56" height="116"/>
   <object id="193" name="Small" gid="149" x="1632" y="876" width="56" height="116"/>
   <object id="194" name="Small" gid="149" x="1588" y="496" width="56" height="116"/>
-  <object id="195" name="Small" gid="149" x="2028" y="454" width="56" height="116"/>
+  <object id="195" name="Small" gid="149" x="2024" y="472" width="56" height="116"/>
   <object id="196" name="Small" gid="149" x="2254" y="800" width="56" height="116"/>
   <object id="197" name="Small" gid="149" x="2468" y="546" width="56" height="116"/>
   <object id="198" name="Small" gid="149" x="2380" y="514" width="56" height="116"/>
