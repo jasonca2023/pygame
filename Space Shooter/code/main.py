@@ -142,12 +142,12 @@ font = pygame.font.Font(join('..', 'graphics', 'Oxanium-Bold.ttf'), 40)
 explosion_frames = [pygame.image.load(join('..', 'graphics', 'explosions', f'{i}.png')).convert_alpha() for i in range(21)]
 
 laser_sound = pygame.mixer.Sound(join('..', 'audio', 'laser.wav'))
-laser_sound.set_volume(0.5)
+laser_sound.set_volume(0.1)
 explosion_sound = pygame.mixer.Sound(join('..', 'audio', 'explosion.wav'))
-explosion_sound.set_volume(0.5)
+explosion_sound.set_volume(0.1)
 damage_sound = pygame.mixer.Sound(join('..', 'audio', 'space shooter_audio_damage.ogg'))
 game_music = pygame.mixer.Sound(join('..', 'audio', 'game_music.wav'))
-game_music.set_volume(0.05)
+game_music.set_volume(0.1)
 game_music.play(loops = -1)
 
 meteor_event = pygame.event.custom_type()
