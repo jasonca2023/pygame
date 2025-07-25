@@ -11,7 +11,8 @@ class Game:
         self.display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
         pygame.display.set_caption('Survivor')
         self.clock = pygame.time.Clock()
-        self.running = True
+        self.killed_enemies = 0
+        self.font = pygame.font.Font(join('..', 'images', 'font', 'AmericanTypewriter.ttc'), 75)
 
         self.all_sprites = AllSprites()
         self.collision_sprites = pygame.sprite.Group()
@@ -91,21 +92,38 @@ class Game:
                 collision_sprites = pygame.sprite.spritecollide(bullet, self.enemy_sprites, False, pygame.sprite.collide_mask)
                 if collision_sprites:
                     self.impact_sound.play()
+                    self.killed_enemies += 1
                     for sprite in collision_sprites:
                         sprite.destroy()
                     bullet.kill()
 
     def player_collision(self):
         if pygame.sprite.spritecollide(self.player, self.enemy_sprites, False, pygame.sprite.collide_mask):
-            self.running = False
+            pygame.mixer.fadeout(5000)
+
+            self.display_surface.fill('#33323d')
+            death_text = self.font.render('You died!', True, '#ebd278')
+            death_rect = death_text.get_frect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 50))
+
+            score = self.font.render(f'Score: {self.killed_enemies}', True, '#ebd278')
+            score_rect = score.get_frect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + 50))
+
+            self.display_surface.blit(death_text, death_rect)
+            self.display_surface.blit(score, score_rect)
+
+            pygame.display.update()
+            pygame.time.wait(5000)
+            pygame.quit()
+            sys.exit()
                     
     def run(self):
-        while self.running:
+        while True:
             dt = self.clock.tick() / 1000
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    self.running = False
+                    pygame.quit()
+                    sys.exit()
                 if event.type == self.enemy_event:
                     Enemy(choice(self.spawn_positions), choice(list(self.enemy_frames.values())), (self.all_sprites, self.enemy_sprites), self.player, self.collision_sprites)
 
@@ -118,8 +136,6 @@ class Game:
             self.display_surface.fill('black')
             self.all_sprites.draw(self.player.rect.center)     
             pygame.display.update()
-            
-        pygame.quit()
 
 if __name__ == '__main__':
     game = Game()

@@ -77,7 +77,7 @@ class Enemy(pygame.sprite.Sprite):
         self.speed = 350
 
         self.death_time = 0
-        self.death_duration = 400
+        self.death_duration = 100
 
     def animate(self, dt):
         self.frame_index += self.animation_speed * dt
