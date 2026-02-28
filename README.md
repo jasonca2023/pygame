@@ -27,3 +27,6 @@ This repository contains a variety of games created using Pygame. Each game demo
 ```bash
 git clone https://github.com/jasonca2023/pygame.git
 cd pygame
+
+## Acknowledgements
+Thank you so much Clear Code for creating the base code on which this entire project is based upon!
