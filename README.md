@@ -29,5 +29,69 @@ git clone https://github.com/jasonca2023/pygame.git
 cd pygame
 ```
 
+## Instructions
+
+### Breakout
+- A and D keys to move
+- Spacebar to release ball
+
+### Flappy Bird
+- Spacebar to jump/restart game when dead
+- Left click to jump/restart game when dead
+
+### Monster Battle
+- Arrow keys for navigation of menu
+- Enter for menu selection
+
+### Pixel Runner
+- Spacebar to jump
+- Look inside game for further instruction
+
+### Platform
+- A and D for movement
+- Spacebar for jump
+- Left click for shooting
+
+### Pong
+- Up/Down arrow keys to move player
+
+### Pydew Valley
+- L_Shift to change tool type
+- R_Shift to change seed type
+- Spacebar to use tool
+- C to plant seed
+- Enter to interact with merchant
+- Up/Down arrow keys once in the merchant menu
+
+### Python-Monsters
+- Enter to initiate/continue dialogue (only when near an NPC)
+- Walk to a designated door to enter a hospital/certain house/arenas
+- Enter to use use different monster abilities (only in battle)
+- Up/Down arrow keys when in battle options (only in battle)
+- Enter to see monster index
+- Up/Down arrow Kays once in monster index
+
+### Snake
+- Arrow keys for movement
+
+### Space Invaders
+- A and D for movement
+- Spacebar for shooting
+
+### Space Shooter
+- WASD for movement
+- Space for shooting
+
+### Super-Pirate-World
+- A and D for movement in both a map and the overworld
+- Spacebar for jump
+- Left click for attack
+- Enter to enter a map
+- Down arrow key to phase through horizontal platforms
+
+### Vampire Survivor
+- WASD for movement
+- Left click for shooting
+
 ## 🙏 Acknowledgements
 Thank you so much Clear Code for creating the base code on which this entire project is based upon!
