@@ -2,11 +2,11 @@
 
 A collection of fun and engaging games built with [Pygame](https://www.pygame.org/), a Python library designed for writing video games.
 
-## 🎮 About
+## About
 
 This repository contains a variety of games created using Pygame. Each game demonstrates different aspects of game development, from basic mechanics to more complex interactions and graphics.
 
-## ✨ Features
+## Features
 
 - Multiple game projects in a single repository
 - Clean, well-organized code structure
@@ -14,7 +14,7 @@ This repository contains a variety of games created using Pygame. Each game demo
 - Cross-platform compatibility (Windows, macOS, Linux)
 - Easy to learn and modify
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -32,7 +32,7 @@ cd pygame
 ## Instructions
 
 ### Breakout
-- A and D keys to move
+- Arrow keys to move
 - Spacebar to release ball
 
 ### Flappy Bird
@@ -41,7 +41,7 @@ cd pygame
 
 ### Monster Battle
 - Arrow keys for navigation of menu
-- Enter for menu selection
+- Spacebar for menu selection
 
 ### Pixel Runner
 - Spacebar to jump
@@ -49,7 +49,7 @@ cd pygame
 
 ### Platform
 - A and D for movement
-- Spacebar for jump
+- Spacebar to jump
 - Left click for shooting
 
 ### Pong
@@ -62,14 +62,15 @@ cd pygame
 - C to plant seed
 - Enter to interact with merchant
 - Up/Down arrow keys once in the merchant menu
+- Escape key to exit merchant menu
 
 ### Python-Monsters
-- Enter to initiate/continue dialogue (only when near an NPC)
+- Spacebar to initiate/continue dialogue (only when near an NPC)
 - Walk to a designated door to enter a hospital/certain house/arenas
-- Enter to use use different monster abilities (only in battle)
+- Spcaebar to use use different monster abilities (only in battle)
 - Up/Down arrow keys when in battle options (only in battle)
 - Enter to see monster index
-- Up/Down arrow Kays once in monster index
+- Up/Down arrow keys once in monster index
 
 ### Snake
 - Arrow keys for movement
@@ -93,5 +94,5 @@ cd pygame
 - WASD for movement
 - Left click for shooting
 
-## 🙏 Acknowledgements
+## Acknowledgements
 Thank you so much Clear Code for creating the base code on which this entire project is based upon!
